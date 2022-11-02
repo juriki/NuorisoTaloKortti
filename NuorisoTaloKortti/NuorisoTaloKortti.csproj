@@ -137,7 +137,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Kuvat\VaroIlostaAskolaa.jpg" />
+    <Content Include="Kuvat\askolaLogo.png" />
+    <Content Include="Kuvat\index[224].png" />
+    <Content Include="Kuvat\Varo iloista Askolaa[223].png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
