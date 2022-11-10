@@ -95,6 +95,7 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Huoltajat" EntitySet="Huoltajat" />
           </AssociationSet>
+
           <AssociationSet Name="FK__Nuoret__Huoltaja__6A30C649" Association="Self.FK__Nuoret__Huoltaja__6A30C649">
             <End Role="Huoltajat" EntitySet="Huoltajat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
@@ -103,6 +104,7 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
           </AssociationSet>
+
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -121,6 +123,7 @@
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Postitoimipaikat" Relationship="Self.FK__Huoltajat__Posti__628FA481" FromRole="Huoltajat" ToRole="Postitoimipaikat" />
           <NavigationProperty Name="Nuoret" Relationship="Self.FK__Nuoret__Huoltaja__6A30C649" FromRole="Huoltajat" ToRole="Nuoret" />
+
         </EntityType>
         <EntityType Name="Kayttajat">
           <Key>
@@ -148,8 +151,10 @@
           <Property Name="Kuvauslupa" Type="Boolean" Nullable="false" />
           <Property Name="Aktivointi" Type="Boolean" Nullable="false" />
           <Property Name="Kuva" Type="Binary" MaxLength="Max" FixedLength="false" />
+
           <NavigationProperty Name="Huoltajat" Relationship="Self.FK__Nuoret__Huoltaja__6A30C649" FromRole="Nuoret" ToRole="Huoltajat" />
           <NavigationProperty Name="Postitoimipaikat" Relationship="Self.FK__Nuoret__Postinum__6477ECF3" FromRole="Nuoret" ToRole="Postitoimipaikat" />
+
         </EntityType>
         <EntityType Name="Postitoimipaikat">
           <Key>
@@ -158,6 +163,7 @@
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Postitoimipaikka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Huoltajat" Relationship="Self.FK__Huoltajat__Posti__628FA481" FromRole="Postitoimipaikat" ToRole="Huoltajat" />
+
           <NavigationProperty Name="Nuoret" Relationship="Self.FK__Nuoret__Postinum__6477ECF3" FromRole="Postitoimipaikat" ToRole="Nuoret" />
         </EntityType>
         <Association Name="FK__Huoltajat__Posti__628FA481">
@@ -196,6 +202,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+
         <EntityContainer Name="NuorisokorttiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Huoltajat" EntityType="Self.Huoltajat" />
           <EntitySet Name="Kayttajat" EntityType="Self.Kayttajat" />
@@ -205,6 +212,7 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Huoltajat" EntitySet="Huoltajat" />
           </AssociationSet>
+
           <AssociationSet Name="FK__Nuoret__Huoltaja__6A30C649" Association="Self.FK__Nuoret__Huoltaja__6A30C649">
             <End Role="Huoltajat" EntitySet="Huoltajat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
@@ -213,6 +221,7 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
           </AssociationSet>
+
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>

@@ -5,6 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="334e3ad2d91e47cb8a68f1ec4f582a3d" Name="Diagram1">
+
         <EntityTypeShape EntityType="NuorisokorttiModel.Huoltajat" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NuorisokorttiModel.Kayttajat" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NuorisokorttiModel.Nuoret" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
