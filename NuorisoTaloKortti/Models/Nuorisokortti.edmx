@@ -62,30 +62,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Huoltajat__Posti__693CA210">
-          <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
-          <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Postitoimipaikat">
-              <PropertyRef Name="Postinumero" />
-            </Principal>
-            <Dependent Role="Huoltajat">
-              <PropertyRef Name="Postinumero" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Nuoret__Huoltaja__6383C8BA">
-          <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="1" />
-          <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Huoltajat">
-              <PropertyRef Name="HuoltajaId" />
-            </Principal>
-            <Dependent Role="Nuoret">
-              <PropertyRef Name="Huoltaja" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Nuoret__Huoltaja__6A30C649">
           <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="1" />
           <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
@@ -110,18 +86,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nuoret__Postinum__6B24EA82">
-          <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
-          <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Postitoimipaikat">
-              <PropertyRef Name="Postinumero" />
-            </Principal>
-            <Dependent Role="Nuoret">
-              <PropertyRef Name="Postinumero" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NuorisokorttiModelStoreContainer">
           <EntitySet Name="Huoltajat" EntityType="Self.Huoltajat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kayttajat" EntityType="Self.Kayttajat" Schema="dbo" store:Type="Tables" />
@@ -131,14 +95,7 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Huoltajat" EntitySet="Huoltajat" />
           </AssociationSet>
-          <AssociationSet Name="FK__Huoltajat__Posti__693CA210" Association="Self.FK__Huoltajat__Posti__693CA210">
-            <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
-            <End Role="Huoltajat" EntitySet="Huoltajat" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Nuoret__Huoltaja__6383C8BA" Association="Self.FK__Nuoret__Huoltaja__6383C8BA">
-            <End Role="Huoltajat" EntitySet="Huoltajat" />
-            <End Role="Nuoret" EntitySet="Nuoret" />
-          </AssociationSet>
+
           <AssociationSet Name="FK__Nuoret__Huoltaja__6A30C649" Association="Self.FK__Nuoret__Huoltaja__6A30C649">
             <End Role="Huoltajat" EntitySet="Huoltajat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
@@ -147,10 +104,7 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nuoret__Postinum__6B24EA82" Association="Self.FK__Nuoret__Postinum__6B24EA82">
-            <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
-            <End Role="Nuoret" EntitySet="Nuoret" />
-          </AssociationSet>
+
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -168,9 +122,8 @@
           <Property Name="Osoite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Postitoimipaikat" Relationship="Self.FK__Huoltajat__Posti__628FA481" FromRole="Huoltajat" ToRole="Postitoimipaikat" />
-          <NavigationProperty Name="Postitoimipaikat1" Relationship="Self.FK__Huoltajat__Posti__693CA210" FromRole="Huoltajat" ToRole="Postitoimipaikat" />
-          <NavigationProperty Name="Nuoret" Relationship="Self.FK__Nuoret__Huoltaja__6383C8BA" FromRole="Huoltajat" ToRole="Nuoret" />
-          <NavigationProperty Name="Nuoret1" Relationship="Self.FK__Nuoret__Huoltaja__6A30C649" FromRole="Huoltajat" ToRole="Nuoret" />
+          <NavigationProperty Name="Nuoret" Relationship="Self.FK__Nuoret__Huoltaja__6A30C649" FromRole="Huoltajat" ToRole="Nuoret" />
+
         </EntityType>
         <EntityType Name="Kayttajat">
           <Key>
@@ -198,10 +151,10 @@
           <Property Name="Kuvauslupa" Type="Boolean" Nullable="false" />
           <Property Name="Aktivointi" Type="Boolean" Nullable="false" />
           <Property Name="Kuva" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Huoltajat" Relationship="Self.FK__Nuoret__Huoltaja__6383C8BA" FromRole="Nuoret" ToRole="Huoltajat" />
-          <NavigationProperty Name="Huoltajat1" Relationship="Self.FK__Nuoret__Huoltaja__6A30C649" FromRole="Nuoret" ToRole="Huoltajat" />
+
+          <NavigationProperty Name="Huoltajat" Relationship="Self.FK__Nuoret__Huoltaja__6A30C649" FromRole="Nuoret" ToRole="Huoltajat" />
           <NavigationProperty Name="Postitoimipaikat" Relationship="Self.FK__Nuoret__Postinum__6477ECF3" FromRole="Nuoret" ToRole="Postitoimipaikat" />
-          <NavigationProperty Name="Postitoimipaikat1" Relationship="Self.FK__Nuoret__Postinum__6B24EA82" FromRole="Nuoret" ToRole="Postitoimipaikat" />
+
         </EntityType>
         <EntityType Name="Postitoimipaikat">
           <Key>
@@ -210,9 +163,8 @@
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Postitoimipaikka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Huoltajat" Relationship="Self.FK__Huoltajat__Posti__628FA481" FromRole="Postitoimipaikat" ToRole="Huoltajat" />
-          <NavigationProperty Name="Huoltajat1" Relationship="Self.FK__Huoltajat__Posti__693CA210" FromRole="Postitoimipaikat" ToRole="Huoltajat" />
+
           <NavigationProperty Name="Nuoret" Relationship="Self.FK__Nuoret__Postinum__6477ECF3" FromRole="Postitoimipaikat" ToRole="Nuoret" />
-          <NavigationProperty Name="Nuoret1" Relationship="Self.FK__Nuoret__Postinum__6B24EA82" FromRole="Postitoimipaikat" ToRole="Nuoret" />
         </EntityType>
         <Association Name="FK__Huoltajat__Posti__628FA481">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
@@ -223,30 +175,6 @@
             </Principal>
             <Dependent Role="Huoltajat">
               <PropertyRef Name="Postinumero" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Huoltajat__Posti__693CA210">
-          <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
-          <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Postitoimipaikat">
-              <PropertyRef Name="Postinumero" />
-            </Principal>
-            <Dependent Role="Huoltajat">
-              <PropertyRef Name="Postinumero" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Nuoret__Huoltaja__6383C8BA">
-          <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="1" />
-          <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Huoltajat">
-              <PropertyRef Name="HuoltajaId" />
-            </Principal>
-            <Dependent Role="Nuoret">
-              <PropertyRef Name="Huoltaja" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -274,18 +202,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nuoret__Postinum__6B24EA82">
-          <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
-          <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Postitoimipaikat">
-              <PropertyRef Name="Postinumero" />
-            </Principal>
-            <Dependent Role="Nuoret">
-              <PropertyRef Name="Postinumero" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+
         <EntityContainer Name="NuorisokorttiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Huoltajat" EntityType="Self.Huoltajat" />
           <EntitySet Name="Kayttajat" EntityType="Self.Kayttajat" />
@@ -295,14 +212,7 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Huoltajat" EntitySet="Huoltajat" />
           </AssociationSet>
-          <AssociationSet Name="FK__Huoltajat__Posti__693CA210" Association="Self.FK__Huoltajat__Posti__693CA210">
-            <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
-            <End Role="Huoltajat" EntitySet="Huoltajat" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Nuoret__Huoltaja__6383C8BA" Association="Self.FK__Nuoret__Huoltaja__6383C8BA">
-            <End Role="Huoltajat" EntitySet="Huoltajat" />
-            <End Role="Nuoret" EntitySet="Nuoret" />
-          </AssociationSet>
+
           <AssociationSet Name="FK__Nuoret__Huoltaja__6A30C649" Association="Self.FK__Nuoret__Huoltaja__6A30C649">
             <End Role="Huoltajat" EntitySet="Huoltajat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
@@ -311,10 +221,7 @@
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nuoret__Postinum__6B24EA82" Association="Self.FK__Nuoret__Postinum__6B24EA82">
-            <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
-            <End Role="Nuoret" EntitySet="Nuoret" />
-          </AssociationSet>
+
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>

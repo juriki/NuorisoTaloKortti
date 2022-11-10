@@ -176,8 +176,8 @@
     <Content Include="Kuvat\Varo iloista Askolaa[223].png" />
     <Content Include="Models\Nuorisokortti.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Nuorisokortti.Context.cs</LastGenOutput>
       <DependentUpon>Nuorisokortti.edmx</DependentUpon>
+      <LastGenOutput>Nuorisokortti.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Nuorisokortti.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
