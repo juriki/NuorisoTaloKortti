@@ -123,15 +123,32 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Huoltajat.cs">
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kayttajat.cs">
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Nuoret.cs">
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Nuorisokortti.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Nuorisokortti.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Nuorisokortti.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Nuorisokortti.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Nuorisokortti.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Postitoimipaikat.cs">
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -159,7 +176,13 @@
     <Content Include="Kuvat\Varo iloista Askolaa[223].png" />
     <Content Include="Models\Nuorisokortti.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
       <LastGenOutput>Nuorisokortti.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Nuorisokortti.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
+      <LastGenOutput>Nuorisokortti.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -202,9 +225,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Nuorisokortti.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\Nuorisokortti.edmx.diagram">
+    <Content Include="Models\Nuorisokortti.edmx.diagram">
       <DependentUpon>Nuorisokortti.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
