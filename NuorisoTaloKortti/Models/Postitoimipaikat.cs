@@ -18,9 +18,7 @@ namespace NuorisoTaloKortti.Models
         public Postitoimipaikat()
         {
             this.Huoltajat = new HashSet<Huoltajat>();
-            this.Huoltajat1 = new HashSet<Huoltajat>();
             this.Nuoret = new HashSet<Nuoret>();
-            this.Nuoret1 = new HashSet<Nuoret>();
         }
     
         public string Postinumero { get; set; }
@@ -29,10 +27,6 @@ namespace NuorisoTaloKortti.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Huoltajat> Huoltajat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Huoltajat> Huoltajat1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Nuoret> Nuoret { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nuoret> Nuoret1 { get; set; }
     }
 }
