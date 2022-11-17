@@ -18,7 +18,6 @@ namespace NuorisoTaloKortti.Models
         public string Kayttajanimi { get; set; }
         public string Salasana { get; set; }
         public bool Yllapito { get; set; }
-
         public string LoginErrorMessage { get; set; }
     }
 }

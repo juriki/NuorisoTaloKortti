@@ -11,7 +11,15 @@ namespace NuorisoTaloKortti.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Session["Kayttajanimi"] != null)
+            {
+                ViewBag.LoggedStatus = "Out";
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("LoginIkkuna", "Home");
+            }
         }
 
         public ActionResult About()
@@ -28,6 +36,17 @@ namespace NuorisoTaloKortti.Controllers
             return View();
         }
 
+        public ActionResult LoginIkkuna()
+        {
+            if (Session["Kayttajanimi"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
+        }
 
         [HttpPost]
         public ActionResult Authorize(Kayttajat kayttajat)
@@ -40,7 +59,7 @@ namespace NuorisoTaloKortti.Controllers
                 ViewBag.LoginMessage = "Successfull login";
                 ViewBag.LoggedStatus = "In";
                 Session["Kayttajanimi"] = LoggedUser.Kayttajanimi;
-                return RedirectToAction("About", "Home"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa --> Home/Index
+                return RedirectToAction("Index", "Home"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa --> Home/Index
             }
             else
             {
@@ -50,6 +69,15 @@ namespace NuorisoTaloKortti.Controllers
                 return View("Login", kayttajat);
             }
         }
+
+
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            ViewBag.LoggedStatus = "Out";
+            return RedirectToAction("Index", "Home"); //Uloskirjautumisen jälkeen pääsivulle
+        }
+
     }
 
 }
