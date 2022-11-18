@@ -11,28 +11,31 @@ namespace NuorisoTaloKortti.Controllers
     {
         public ActionResult Index()
         {
-            if (Session["Kayttajanimi"] != null)
+            // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 ViewBag.LoggedStatus = "Out";
-                return View();
+                return RedirectToAction("About", "Home");
+                //return View();
             }
-            else
+            else if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-                return RedirectToAction("LoginIkkuna", "Home");
+                return RedirectToAction("Contact", "Home");
             }
+
+            else 
+            { 
+                return RedirectToAction("Loginikkuna", "Home");
+            } 
         }
 
         public ActionResult About()
         {
-          //  ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-          //  ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
@@ -57,7 +60,7 @@ namespace NuorisoTaloKortti.Controllers
             if (LoggedUser != null)
             {
                 ViewBag.LoginMessage = "Successfull login";
-                ViewBag.LoggedStatus = "In";
+                Session["Yllapito"] = LoggedUser.Yllapito;
                 Session["Kayttajanimi"] = LoggedUser.Kayttajanimi;
                 return RedirectToAction("Index", "Home"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa --> Home/Index
             }
@@ -65,8 +68,9 @@ namespace NuorisoTaloKortti.Controllers
             {
                 ViewBag.LoginMessage = "Login unsuccessfull";
                 ViewBag.LoggedStatus = "Out";
-                //Kayttajat.LoginErrorMessage = "Tuntematon käyttäjätunnus tai salasana.";
-                return View("Login", kayttajat);
+                kayttajat.LoginErrorMessage = "Tuntematon käyttäjätunnus tai salasana.";
+          //      return RedirectToAction("Index", "Home");
+                return View("LoginIkkuna",kayttajat);
             }
         }
 
