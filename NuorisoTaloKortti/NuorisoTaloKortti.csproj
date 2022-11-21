@@ -338,6 +338,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\LoginIkkuna.cshtml" />
     <Content Include="Views\Home\LogOut.cshtml" />
+    <Content Include="Views\Shared\_NavBarLoggedOut.cshtml" />
+    <Content Include="Views\Shared\_NavabarLoggeInAdmin.cshtml" />
+    <Content Include="Views\Shared\_NavabarLoggeInNuori.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
