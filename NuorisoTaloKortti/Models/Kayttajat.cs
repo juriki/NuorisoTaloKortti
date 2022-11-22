@@ -13,16 +13,16 @@ namespace NuorisoTaloKortti.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-
     public partial class Kayttajat
     {
         public int KayttajaId { get; set; }
-        [Required(ErrorMessage = "Anna käyttäjätunnus!")]
         public string Kayttajanimi { get; set; }
-        [DataType(DataType.Password)]
-        [Required(ErrorMessage = "Anna salasana!")]
+        [Required(ErrorMessage = "Käyttäjätunnus on pakollinen tieto!")]
         public string Salasana { get; set; }
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Salasana on pakollinen tieto!")]
         public bool Yllapito { get; set; }
+
         public string LoginErrorMessage { get; set; }
     }
 }
