@@ -12,7 +12,16 @@ namespace NuorisoTaloKortti.Controllers
         // GET: Kortti
         public ActionResult Index()
         {
+            // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
+            {
+                ViewBag.LoggedStatus = "Out";
                 return View();
+            }
+            else
+            {
+                return RedirectToAction("Loginikkuna", "Home");
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace NuorisoTaloKortti.Controllers
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 ViewBag.LoggedStatus = "Out";
-                return RedirectToAction("About", "Home");
+                return RedirectToAction("Korti", "Index");
                 //return View();
             }
             else if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
