@@ -20,9 +20,7 @@ namespace NuorisoTaloKortti.Models
         [Required(ErrorMessage = "Käyttäjätunnus on pakollinen tieto!")]
         public string Salasana { get; set; }
         [DataType(DataType.Password)]
-        [Required(ErrorMessage = "Salasana on pakollinen tieto!")]
         public bool Yllapito { get; set; }
-
-        public string LoginErrorMessage { get; set; }
+        public string LoginErrorMessage { get; internal set; }
     }
 }
