@@ -61,6 +61,7 @@ namespace NuorisoTaloKortti.Controllers
             {
                 ViewBag.LoginMessage = "Successfull login";
                 Session["Yllapito"] = LoggedUser.Yllapito;
+                Session["KayttajaId"] = LoggedUser.KayttajaId;
                 Session["Kayttajanimi"] = LoggedUser.Kayttajanimi;
                 return RedirectToAction("Index", "Home"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa --> Home/Index
             }

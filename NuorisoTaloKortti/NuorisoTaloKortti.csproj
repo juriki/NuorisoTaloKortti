@@ -343,6 +343,8 @@
     <Content Include="Views\Shared\_NavabarLoggeInAdmin.cshtml" />
     <Content Include="Views\Shared\_NavabarLoggeInNuori.cshtml" />
     <Content Include="Views\Kortti\Index.cshtml" />
+    <Content Include="Views\Kortti\Index2.cshtml" />
+    <Content Include="Views\Kortti\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
