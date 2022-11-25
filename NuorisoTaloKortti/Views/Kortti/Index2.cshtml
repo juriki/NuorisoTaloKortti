@@ -1,0 +1,104 @@
+﻿@model IEnumerable<NuorisoTaloKortti.Models.Nuoret>
+
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index2</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SyntymaAika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelinnumero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SPosti)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Allergiat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kuvauslupa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aktivointi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kuva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Huoltajat.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.NuoriId.ToString() == Session["KayttajaId"].ToString())
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sukunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SyntymaAika)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Puhelinnumero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Osoite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SPosti)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Allergiat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kuvauslupa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aktivointi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kuva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Huoltajat.Etunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.NuoriId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.NuoriId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.NuoriId })
+                </td>
+            </tr>
+
+        }
+    }
+
+</table>

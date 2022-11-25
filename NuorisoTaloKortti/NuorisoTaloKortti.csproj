@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KorttiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,7 +176,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Kuvat\askolaLogo.png" />
     <Content Include="Kuvat\index[224].png" />
-    <Content Include="Kuvat\Varo iloista Askolaa[223].png" />
+    <Content Include="Kuvat\Varo iloista Askolaa.png" />
     <Content Include="Models\Nuorisokortti.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Nuorisokortti.edmx</DependentUpon>
@@ -341,6 +342,9 @@
     <Content Include="Views\Shared\_NavBarLoggedOut.cshtml" />
     <Content Include="Views\Shared\_NavabarLoggeInAdmin.cshtml" />
     <Content Include="Views\Shared\_NavabarLoggeInNuori.cshtml" />
+    <Content Include="Views\Kortti\Index.cshtml" />
+    <Content Include="Views\Kortti\Index2.cshtml" />
+    <Content Include="Views\Kortti\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
