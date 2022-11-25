@@ -3,11 +3,20 @@
     ViewBag.Title = "View";
 }
 
-<h2>View</h2>
 
 @foreach (var item in Model)
 {
-    if (item.NuoriId.ToString() == Session["KayttajaId"].ToString())
+    var kuvalupa="";
+
+    if (item.Kuvauslupa.ToString() == "True")
+    {
+        kuvalupa = "Saa otta kuva";
+    }
+    else 
+    { 
+        kuvalupa = "Ei saa otaa kuva";
+    }
+    if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
     {
         <div class="card mb-3">
             <h3 class="card-header">Nuoriso Korti</h3>
@@ -23,7 +32,7 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"></li>
-                <li class="list-group-item"> Kuvaus Lupa @item.Kuvauslupa</li>
+                <li class="list-group-item">@kuvalupa</li>
                 <li class="list-group-item">Vestibulum at eros</li>
             </ul>
             <div class="card-body">

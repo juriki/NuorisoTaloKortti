@@ -17,14 +17,12 @@ namespace NuorisoTaloKortti.Controllers
             {
                 NuorisokorttiEntities db = new NuorisokorttiEntities();
 
-                var nuoriIdo = Session["KayttajaId"].ToString();
+                var nuoriIdo = Session["Kayttajanimi"].ToString();
 
                 List<Nuoret> model = db.Nuoret.ToList();
-                ViewBag.LoggedStatus = "Out";
-
                 foreach (var item in model)
                 {
-                    var joku = item.NuoriId;
+                    var joku = item.Kayttajanimi;
                     if (joku.ToString() == nuoriIdo)
                     {
                         return View(model);
