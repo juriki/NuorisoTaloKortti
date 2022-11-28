@@ -174,6 +174,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Kuvat\ukkkoKuva.jpg" />
     <Content Include="Kuvat\askolaLogo.png" />
     <Content Include="Kuvat\index[224].png" />
     <Content Include="Kuvat\Varo iloista Askolaa.png" />
