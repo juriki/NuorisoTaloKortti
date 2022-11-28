@@ -3,37 +3,54 @@
     ViewBag.Title = "View";
 }
 
-<h2>View</h2>
-
-@foreach (var item in Model)
-{
-    if (item.NuoriId.ToString() == Session["KayttajaId"].ToString())
+<center>
+    @foreach (var item in Model)
     {
-        <div class="card mb-3">
-            <h3 class="card-header">Nuoriso Korti</h3>
-            <div class="card-body">
-                <h5 class="card-title">Nimi @item.Etunimi @item.Sukunimi</h5>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                <rect width="100%" height="100%" fill="#868e96"></rect>
-                <text x="50%" y="50%" fill="#dee2e6" dy=".3em"><img src="/Kuvat/Varo iloista Askolaa.png" width="50px" height="auto" /></text>
-            </svg>
-            <div class="card-body">
-                <p class="card-text">Puhelin numero : @item.Puhelinnumero </p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"></li>
-                <li class="list-group-item"> Kuvaus Lupa @item.Kuvauslupa</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">link</a>
-            </div>
-            <div class="card-footer text-muted">
-                <p> Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")</p>
-            </div>
+        var kuvalupa = "";
 
-        </div>
+        if (item.Kuvauslupa.ToString() == "True")
+        {
+            kuvalupa = "saa otta kuva !";
+        }
+        else
+        {
+            kuvalupa = "ei saa otaa kuva !";
+        }
+        if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
+        {
+            <style>
+                .pictur
+                {
+                    transform: scale(1);
+                    transition: 2s all;
+                }
+                .pictur:hover 
+                {
+                    transform: rotate(-90deg) scale(1);
+                }
+            </style>
+            <div class="card mb-3" style="width: 450px; text-align: center; margin-top: 25px">
+                <h3 class="card-header" style="background-color:#B71234">Nuoriso Korti</h3>
+                <div style="background-color: yellow;" class="card-body">
+                    <h5 class="card-title">Nimi : @item.Etunimi @item.Sukunimi</h5>
+                </div>
+                <img src="/Kuvat/ukkkoKuva.jpg" alt="Alternate Text" height="auto" width="350px" style="margin-left: 50px;" />
+                <img class="pictur" style="margin-top: -120px; margin-left: 30px;" src="/Kuvat/Varo iloista Askolaa.png" width="130px" height="auto" />
+                <div class="card-body">
+                    <h5 class="card-text">Puhelin numero : @item.Puhelinnumero </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h6>Nuoresta @kuvalupa</h6></li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Muut tiedot</a>
+                </div>
+                <div style="background-color: #B71234; opacity: .7;" class="card-footer text-muted">
+                    <p style="color: black; opacity: 1"> Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")</p>
+                </div>
+
+            </div>
+        }
+
     }
-
-}
+</center>
