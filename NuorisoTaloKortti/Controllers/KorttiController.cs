@@ -4,8 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NuorisoTaloKortti.Models;
-// List Generator
-using System.Collections.Generic;
 
 namespace NuorisoTaloKortti.Controllers
 {

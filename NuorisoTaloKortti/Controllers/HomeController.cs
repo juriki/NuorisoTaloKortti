@@ -15,7 +15,7 @@ namespace NuorisoTaloKortti.Controllers
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 ViewBag.LoggedStatus = "Out";
-                return RedirectToAction("Korti", "Index");
+                return RedirectToAction("About", "Index");
                 //return View();
             }
             else if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
@@ -63,7 +63,7 @@ namespace NuorisoTaloKortti.Controllers
                 Session["Yllapito"] = LoggedUser.Yllapito;
                 Session["KayttajaId"] = LoggedUser.KayttajaId;
                 Session["Kayttajanimi"] = LoggedUser.Kayttajanimi;
-                return RedirectToAction("Index", "Home"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa --> Home/Index
+                return RedirectToAction("About", "Home"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa --> Home/Index
             }
             else
             {
