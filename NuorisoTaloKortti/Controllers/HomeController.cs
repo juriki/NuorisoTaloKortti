@@ -54,7 +54,7 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         public ActionResult Authorize(Kayttajat kayttajat)
         {
-            NuorisokorttiEntities db = new NuorisokorttiEntities();
+            NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
             //Haetaan käyttäjän/Loginin tiedot annetuilla tunnustiedoilla tietokannasta LINQ -kyselyllä
             var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == kayttajat.Salasana);
             if (LoggedUser != null)
