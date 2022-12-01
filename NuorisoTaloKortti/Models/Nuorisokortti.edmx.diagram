@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="334e3ad2d91e47cb8a68f1ec4f582a3d" Name="Diagram1">
+      <Diagram DiagramId="334e3ad2d91e47cb8a68f1ec4f582a3d" Name="Diagram1" ZoomLevel="82">
 
-        <EntityTypeShape EntityType="NuorisokorttiModel.Huoltajat" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NuorisokorttiModel.Kayttajat" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NuorisokorttiModel.Nuoret" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="NuorisokorttiModel.Postitoimipaikat" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuorisokorttiModel.Huoltajat" Width="1.5" PointX="2.875" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuorisokorttiModel.Kayttajat" Width="1.5" PointX="8.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuorisokorttiModel.Nuoret" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuorisokorttiModel.Postitoimipaikat" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="NuorisokorttiModel.FK__Huoltajat__Posti__628FA481" ManuallyRouted="false" />
         <AssociationConnector Association="NuorisokorttiModel.FK__Nuoret__Huoltaja__6A30C649" ManuallyRouted="false" />
         <AssociationConnector Association="NuorisokorttiModel.FK__Nuoret__Postinum__6477ECF3" ManuallyRouted="false" />

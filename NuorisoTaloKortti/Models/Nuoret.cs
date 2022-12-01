@@ -27,9 +27,9 @@ namespace NuorisoTaloKortti.Models
         public bool Kuvauslupa { get; set; }
         public bool Aktivointi { get; set; }
         public byte[] Kuva { get; set; }
+        public string Kayttajanimi { get; set; }
     
         public virtual Huoltajat Huoltajat { get; set; }
-
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }
     }
 }
