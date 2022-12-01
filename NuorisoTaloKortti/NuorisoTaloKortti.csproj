@@ -121,7 +121,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HuoltajatController.cs" />
     <Compile Include="Controllers\KorttiController.cs" />
+    <Compile Include="Controllers\NuoretController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -346,6 +348,10 @@
     <Content Include="Views\Kortti\Index.cshtml" />
     <Content Include="Views\Kortti\Index2.cshtml" />
     <Content Include="Views\Kortti\View.cshtml" />
+    <Content Include="Views\Home\YllapitoNuoret.cshtml" />
+    <Content Include="Views\Nuoret\Index.cshtml" />
+    <Content Include="Views\Huoltajat\Index.cshtml" />
+    <Content Include="Views\Huoltajat\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<NuorisoTaloKortti.Models.Nuoret>
+
 @{
     ViewBag.Title = "View";
 }
@@ -19,15 +20,14 @@
         if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
         {
             <style>
-                .pictur
-                {
+                .pictur {
                     transform: scale(1);
                     transition: 2s all;
                 }
-                .pictur:hover 
-                {
-                    transform: rotate(-90deg) scale(1);
-                }
+
+                    .pictur:hover {
+                        transform: rotate(-90deg) scale(1);
+                    }
             </style>
             <div class="card mb-3" style="width: 450px; text-align: center; margin-top: 25px">
                 <h3 class="card-header" style="background-color:#B71234">Nuoriso Korti</h3>
