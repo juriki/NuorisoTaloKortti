@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows;
 using NuorisoTaloKortti.Models;
+// List Generator
 
 namespace NuorisoTaloKortti.Controllers
 {
@@ -17,22 +19,19 @@ namespace NuorisoTaloKortti.Controllers
             {
                 NuorisokorttiEntities db = new NuorisokorttiEntities();
 
-                var nuoriIdo = Session["KayttajaId"].ToString();
-
                 List<Nuoret> model = db.Nuoret.ToList();
-                ViewBag.LoggedStatus = "Out";
+
 
                 foreach (var item in model)
                 {
-                    var joku = item.NuoriId;
-                    if (joku.ToString() == nuoriIdo)
+                    if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
                     {
-                        return View(model);
+                        var newlist = model.Where(x => x.Kayttajanimi.Contains(Session["Kayttajanimi"].ToString()));
+                        return View(newlist);
                     }
                 }
-                return View();
+                return RedirectToAction("Loginikkuna", "Home");
             }
-
             else
             {
                 return RedirectToAction("Loginikkuna", "Home");

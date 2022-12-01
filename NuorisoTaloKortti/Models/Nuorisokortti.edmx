@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NuorisokorttiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NuorisokorttiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Huoltajat">
           <Key>
             <PropertyRef Name="HuoltajaId" />
@@ -42,6 +42,7 @@
           <Property Name="Kuvauslupa" Type="bit" Nullable="false" />
           <Property Name="Aktivointi" Type="bit" Nullable="false" />
           <Property Name="Kuva" Type="image" />
+          <Property Name="Kayttajanimi" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="Postitoimipaikat">
           <Key>
@@ -50,7 +51,7 @@
           <Property Name="Postinumero" Type="nchar" MaxLength="5" Nullable="false" />
           <Property Name="Postitoimipaikka" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Huoltajat__Posti__628FA481">
+        <Association Name="FK__Huoltajat__Posti__2F10007B">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
           <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -62,7 +63,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nuoret__Huoltaja__6A30C649">
+        <Association Name="FK__Nuoret__Huoltaja__300424B4">
           <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="1" />
           <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
           <ReferentialConstraint>
@@ -74,7 +75,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nuoret__Postinum__6477ECF3">
+        <Association Name="FK__Nuoret__Postinum__2E1BDC42">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
           <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
           <ReferentialConstraint>
@@ -91,23 +92,20 @@
           <EntitySet Name="Kayttajat" EntityType="Self.Kayttajat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nuoret" EntityType="Self.Nuoret" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Postitoimipaikat" EntityType="Self.Postitoimipaikat" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Huoltajat__Posti__628FA481" Association="Self.FK__Huoltajat__Posti__628FA481">
+          <AssociationSet Name="FK__Huoltajat__Posti__2F10007B" Association="Self.FK__Huoltajat__Posti__2F10007B">
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Huoltajat" EntitySet="Huoltajat" />
           </AssociationSet>
-
-          <AssociationSet Name="FK__Nuoret__Huoltaja__6A30C649" Association="Self.FK__Nuoret__Huoltaja__6A30C649">
+          <AssociationSet Name="FK__Nuoret__Huoltaja__300424B4" Association="Self.FK__Nuoret__Huoltaja__300424B4">
             <End Role="Huoltajat" EntitySet="Huoltajat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nuoret__Postinum__6477ECF3" Association="Self.FK__Nuoret__Postinum__6477ECF3">
+          <AssociationSet Name="FK__Nuoret__Postinum__2E1BDC42" Association="Self.FK__Nuoret__Postinum__2E1BDC42">
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
           </AssociationSet>
-
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NuorisokorttiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -154,6 +152,7 @@
 
           <NavigationProperty Name="Huoltajat" Relationship="Self.FK__Nuoret__Huoltaja__6A30C649" FromRole="Nuoret" ToRole="Huoltajat" />
           <NavigationProperty Name="Postitoimipaikat" Relationship="Self.FK__Nuoret__Postinum__6477ECF3" FromRole="Nuoret" ToRole="Postitoimipaikat" />
+          <Property Name="Kayttajanimi" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
 
         </EntityType>
         <EntityType Name="Postitoimipaikat">
@@ -254,6 +253,7 @@
           <EntitySetMapping Name="Nuoret">
             <EntityTypeMapping TypeName="NuorisokorttiModel.Nuoret">
               <MappingFragment StoreEntitySet="Nuoret">
+                <ScalarProperty Name="Kayttajanimi" ColumnName="Kayttajanimi" />
                 <ScalarProperty Name="NuoriId" ColumnName="NuoriId" />
                 <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
                 <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />

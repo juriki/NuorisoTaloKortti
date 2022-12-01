@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="334e3ad2d91e47cb8a68f1ec4f582a3d" Name="Diagram1" ZoomLevel="100">
+      <Diagram DiagramId="334e3ad2d91e47cb8a68f1ec4f582a3d" Name="Diagram1" ZoomLevel="82">
 
         <EntityTypeShape EntityType="NuorisokorttiModel.Huoltajat" Width="1.5" PointX="2.875" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="NuorisokorttiModel.Kayttajat" Width="1.5" PointX="8.5" PointY="0.875" IsExpanded="true" />
