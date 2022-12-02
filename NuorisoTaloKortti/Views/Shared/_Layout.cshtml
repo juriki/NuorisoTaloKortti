@@ -4,9 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-
+    <link href="~/wwwroot/css/bootstrap.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div>
     @{
 
         if (Session["Kayttajanimi"] != null)
@@ -37,8 +38,7 @@
     </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Content/bootstrapkaks")
+    <script src="~/wwwroot/js/bootstrap.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -227,6 +227,28 @@
     <Content Include="Content\bootstrap-reboot.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="wwwroot\css\bootstrap-grid.css" />
+    <Content Include="wwwroot\css\bootstrap-grid.min.css" />
+    <Content Include="wwwroot\css\bootstrap-grid.rtl.css" />
+    <Content Include="wwwroot\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="wwwroot\css\bootstrap-reboot.css" />
+    <Content Include="wwwroot\css\bootstrap-reboot.min.css" />
+    <Content Include="wwwroot\css\bootstrap-reboot.rtl.css" />
+    <Content Include="wwwroot\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="wwwroot\css\bootstrap-utilities.css" />
+    <Content Include="wwwroot\css\bootstrap-utilities.min.css" />
+    <Content Include="wwwroot\css\bootstrap-utilities.rtl.css" />
+    <Content Include="wwwroot\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="wwwroot\css\bootstrap.css" />
+    <Content Include="wwwroot\css\bootstrap.min.css" />
+    <Content Include="wwwroot\css\bootstrap.rtl.css" />
+    <Content Include="wwwroot\css\bootstrap.rtl.min.css" />
+    <Content Include="wwwroot\js\bootstrap.bundle.js" />
+    <Content Include="wwwroot\js\bootstrap.bundle.min.js" />
+    <Content Include="wwwroot\js\bootstrap.esm.js" />
+    <Content Include="wwwroot\js\bootstrap.esm.min.js" />
+    <Content Include="wwwroot\js\bootstrap.js" />
+    <Content Include="wwwroot\js\bootstrap.min.js" />
     <EntityDeploy Include="Models\Nuorisokortti.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Nuorisokortti.Designer.cs</LastGenOutput>
@@ -354,11 +376,32 @@
     <Content Include="Views\Nuoret\Index.cshtml" />
     <Content Include="Views\Huoltajat\Index.cshtml" />
     <Content Include="Views\Huoltajat\Edit.cshtml" />
+    <Content Include="wwwroot\css\bootstrap-grid.css.map" />
+    <Content Include="wwwroot\css\bootstrap-grid.min.css.map" />
+    <Content Include="wwwroot\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="wwwroot\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="wwwroot\css\bootstrap-reboot.css.map" />
+    <Content Include="wwwroot\css\bootstrap-reboot.min.css.map" />
+    <Content Include="wwwroot\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="wwwroot\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="wwwroot\css\bootstrap-utilities.css.map" />
+    <Content Include="wwwroot\css\bootstrap-utilities.min.css.map" />
+    <Content Include="wwwroot\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="wwwroot\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="wwwroot\css\bootstrap.css.map" />
+    <Content Include="wwwroot\css\bootstrap.min.css.map" />
+    <Content Include="wwwroot\css\bootstrap.rtl.css.map" />
+    <Content Include="wwwroot\css\bootstrap.rtl.min.css.map" />
+    <Content Include="wwwroot\js\bootstrap.bundle.js.map" />
+    <Content Include="wwwroot\js\bootstrap.bundle.min.js.map" />
+    <Content Include="wwwroot\js\bootstrap.esm.js.map" />
+    <Content Include="wwwroot\js\bootstrap.esm.min.js.map" />
+    <Content Include="wwwroot\js\bootstrap.js.map" />
+    <Content Include="wwwroot\js\bootstrap.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Test\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
