@@ -23,7 +23,7 @@ namespace NuorisoTaloKortti
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrapkaks.css",
                       "~/Content/site.css"));
         }
     }
