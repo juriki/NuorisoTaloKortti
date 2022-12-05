@@ -372,7 +372,6 @@
     <Content Include="Views\Shared\_NavabarLoggeInNuori.cshtml" />
     <Content Include="Views\Kortti\Index.cshtml" />
     <Content Include="Views\Kortti\Index2.cshtml" />
-    <Content Include="Views\Kortti\View.cshtml" />
     <Content Include="Views\Home\YllapitoNuoret.cshtml" />
     <Content Include="Views\Nuoret\Index.cshtml" />
     <Content Include="Views\Huoltajat\Index.cshtml" />
@@ -399,6 +398,7 @@
     <Content Include="wwwroot\js\bootstrap.esm.min.js.map" />
     <Content Include="wwwroot\js\bootstrap.js.map" />
     <Content Include="wwwroot\js\bootstrap.min.js.map" />
+    <Content Include="Views\Kortti\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
