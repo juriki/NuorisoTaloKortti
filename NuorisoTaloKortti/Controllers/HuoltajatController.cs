@@ -7,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace NuorisoTaloKortti.Controllers
 {
@@ -19,14 +21,16 @@ namespace NuorisoTaloKortti.Controllers
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 List<Huoltajat> model = db.Huoltajat.ToList();
-
+                MessageBox.Show(model.ToString());
                 return View(model);
+
             }
             return RedirectToAction("Loginikkuna", "Home");
         }
 
         public ActionResult Edit(int? id)
         {
+            MessageBox.Show(id.ToString());
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Huoltajat huoltaja = db.Huoltajat.Find(id);
             if (huoltaja == null) return HttpNotFound();

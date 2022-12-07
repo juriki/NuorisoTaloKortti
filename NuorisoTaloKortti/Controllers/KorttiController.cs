@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Windows;
+using System.Windows.Forms;
 using NuorisoTaloKortti.Models;
 // List Generator
 
@@ -37,5 +38,34 @@ namespace NuorisoTaloKortti.Controllers
                 return RedirectToAction("Loginikkuna", "Home");
             }
         }
+
+        public ActionResult View()
+        {
+            // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
+            {
+                NuorisokorttiEntities db = new NuorisokorttiEntities();
+
+                List<Nuoret> model = db.Nuoret.ToList();
+
+
+                foreach (var item in model)
+                {
+                    if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
+                    {
+                        var newlist = model.Where(x => x.Kayttajanimi.Contains(Session["Kayttajanimi"].ToString()));
+                        return View(newlist);
+                    }
+                }
+                return RedirectToAction("Loginikkuna", "Home");
+            }
+            else
+            {
+                return RedirectToAction("Loginikkuna", "Home");
+            }
+        }
+
+
+
     }
 }

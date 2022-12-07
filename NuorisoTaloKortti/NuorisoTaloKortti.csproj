@@ -91,6 +91,7 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -371,7 +372,6 @@
     <Content Include="Views\Shared\_NavabarLoggeInNuori.cshtml" />
     <Content Include="Views\Kortti\Index.cshtml" />
     <Content Include="Views\Kortti\Index2.cshtml" />
-    <Content Include="Views\Kortti\View.cshtml" />
     <Content Include="Views\Home\YllapitoNuoret.cshtml" />
     <Content Include="Views\Nuoret\Index.cshtml" />
     <Content Include="Views\Huoltajat\Index.cshtml" />
@@ -398,6 +398,7 @@
     <Content Include="wwwroot\js\bootstrap.esm.min.js.map" />
     <Content Include="wwwroot\js\bootstrap.js.map" />
     <Content Include="wwwroot\js\bootstrap.min.js.map" />
+    <Content Include="Views\Kortti\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
