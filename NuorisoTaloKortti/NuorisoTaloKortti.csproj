@@ -399,6 +399,7 @@
     <Content Include="wwwroot\js\bootstrap.js.map" />
     <Content Include="wwwroot\js\bootstrap.min.js.map" />
     <Content Include="Views\Kortti\View.cshtml" />
+    <Content Include="Views\Kortti\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

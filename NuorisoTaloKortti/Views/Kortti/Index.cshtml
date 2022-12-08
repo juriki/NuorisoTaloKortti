@@ -31,28 +31,39 @@
             </style>
             <div class="card mb-3" style="width: 410px; text-align: center; margin-top: 25px;">
                 <h3 class="card-header" style="background-color:#B71234">Nuoriso Korti</h3>
-                <div style="background-color: #ffed00;" class="card-body">
+                <div style="background-color: #ffed00;" class="card-body; padding: 15px;">
                     <h5 class="card-title">Nimi : @item.Etunimi @item.Sukunimi</h5>
                 </div>
                 <div class="text-center" style="background-color: gray">
-                    <img src="/Kuvat/ukkkoKuva.jpg" alt="Alternate Text" height="auto" width="350px" style="margin-top: 10px;" />
+                    @if (item.Kuva != null)
+                    {
+
+                    }
+                    else
+                    {
+                        <img src="/Kuvat/ukkkoKuva.jpg" alt="Alternate Text" height="auto" width="350px" style="margin-top: 10px;" />
+                    }
                 </div>
                 <img class="pictur" style="margin-top: -120px; margin-left: 30px;" src="/Kuvat/Varo iloista Askolaa.png" width="130px" height="auto" />
                 <div class="card-body">
-                    <h5 class="card-text">Puhelin numero : @item.Puhelinnumero </h5>
+                    <h5 class="card-text" style="padding: 1px;">Puhelin numero : @item.Puhelinnumero </h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><h6>Nuoresta @kuvalupa</h6></li>
                 </ul>
                 <div class="card-body">
-                    <a class="btn btn-success" href="/Kortti/View">Muut tiedot</a>
+                    <a class="btn btn-success" href="/Kortti/View" style="padding: 3px; margin: 1px;">Muut tiedot</a>
                 </div>
-                <div style="background-color: #B71234; opacity: .7;" class="card-footer text-muted">
+                <div style="background-color: #B71234; opacity: .7; padding: 1px;" class="card-footer text-muted">
                     <p style="color: black; opacity: 1"> Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")</p>
                 </div>
 
             </div>
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.NuoriId })
         }
 
     }
+
+
 </center>
