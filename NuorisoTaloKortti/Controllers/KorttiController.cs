@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 using System.Windows;
 using System.Windows.Forms;
 using NuorisoTaloKortti.Models;
+using System.Net;
 // List Generator
 
 namespace NuorisoTaloKortti.Controllers
@@ -67,5 +69,27 @@ namespace NuorisoTaloKortti.Controllers
 
 
 
+        public ActionResult Edit(int? id)
+        {
+
+            NuorisokorttiEntities db = new NuorisokorttiEntities();
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Nuoret nuoret = db.Nuoret.Find(id);
+            if (nuoret == null) return HttpNotFound();
+            return View(nuoret);
+        }
+        NuorisokorttiEntities db = new NuorisokorttiEntities();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Etunimi,Sukunimi,Puhelinnumero")] Nuoret nuoret)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(nuoret).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        return View(nuoret);    
+        }
     }
 }
