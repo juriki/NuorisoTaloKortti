@@ -30,7 +30,17 @@ namespace NuorisoTaloKortti.Controllers
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Huoltajat huoltaja = db.Huoltajat.Find(id);
             if (huoltaja == null) return HttpNotFound();
-            ViewBag.Postinro = new SelectList(db.Postitoimipaikat, "Postinumero", "Postinumero", huoltaja.Postinumero);
+            var post = db.Postitoimipaikat;
+            IEnumerable<SelectListItem> selectPostList = from p in post
+                                                         select new SelectListItem
+                                                         {
+                                                             Value = p.Postinumero,
+                                                             Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                         };
+
+            ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", huoltaja.Postinumero);
+
+
 
             return View(huoltaja);
         }
@@ -47,6 +57,17 @@ namespace NuorisoTaloKortti.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            var post = db.Postitoimipaikat;
+            IEnumerable<SelectListItem> selectPostList = from p in post
+                                                         select new SelectListItem
+                                                         {
+                                                             Value = p.Postinumero,
+                                                             Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                         };
+
+            ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", huoltaja.Postinumero);
+
             return View(huoltaja);
             
         }
