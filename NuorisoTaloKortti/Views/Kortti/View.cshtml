@@ -27,51 +27,54 @@
         </tr>
 
         @foreach (var item in Model)
-                    {
-                        var kuvalupa = "";
-                        var syntymaika = item.SyntymaAika.ToString("dd.MM.yyyy");
-                        var colori = "bg-danger";
-                        if(item.Allergiat == null) 
-                        {
-                            colori = "bg-success";
-                        }
-                        if (item.Kuvauslupa.ToString() == "True") {
-                            kuvalupa = "Saa otta kuva";
+        {
+            var kuvalupa = "";
+            var syntymaika = item.SyntymaAika.ToString("dd.MM.yyyy");
+            var colori = "bg-danger";
+            if (item.Allergiat == null)
+            {
+                colori = "bg-success";
+            }
+            if (item.Kuvauslupa.ToString() == "True")
+            {
+                kuvalupa = "Saa otta kuva";
 
-                        }
-                        else {
-                            kuvalupa = "ei saa otaa kuva";
-                        }
-                        if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString()) {
+            }
+            else
+            {
+                kuvalupa = "ei saa otaa kuva";
+            }
+            if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
+            {
 
-            <tr>
-                <td class="bg-warning">Nuori ID : @Html.DisplayFor(modelItem => item.NuoriId) </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Etunimi)
-                    @Html.DisplayFor(modelItem => item.Sukunimi)
-                </td>
-                <td>@Html.DisplayFor(modelItem => item.Puhelinnumero)</td>
-                <td>@Html.DisplayFor(modelItem => item.Osoite)</td>
-
-
-                <td class=@colori>@Html.DisplayFor(modelItem => item.Allergiat)</td>
-                <td>@Html.DisplayFor(modelItem => item.SPosti)</td>
-                <td>@Html.DisplayFor(modelItem => item.Kayttajanimi)</td>
-                <td>@syntymaika</td>
-                <td>@kuvalupa</td>
+                <tr>
+                    <td class="bg-warning">Nuori ID : @Html.DisplayFor(modelItem => item.NuoriId) </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Etunimi)
+                        @Html.DisplayFor(modelItem => item.Sukunimi)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Puhelinnumero)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Osoite)</td>
 
 
-            </tr>
+                    <td class=@colori>@Html.DisplayFor(modelItem => item.Allergiat)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SPosti)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Kayttajanimi)</td>
+                    <td>@syntymaika</td>
+                    <td>@kuvalupa</td>
 
-            <tr>
-                <td class="bg-warning">Huoltaja ID : @Html.DisplayFor(modelItem => item.Huoltajat.HuoltajaId) </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Huoltajat.Etunimi)
-                    @Html.DisplayFor(modelItem => item.Huoltajat.Sukunimi)
-                </td>
-                <td>@Html.DisplayFor(modelItem => item.Huoltajat.Puhelinnumero)</td>
-                <td>@Html.DisplayFor(modelItem => item.Huoltajat.Osoite)</td>
-            </tr>
+
+                </tr>
+
+                <tr>
+                    <td class="bg-warning">Huoltaja ID : @Html.DisplayFor(modelItem => item.Huoltajat.HuoltajaId) </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Huoltajat.Etunimi)
+                        @Html.DisplayFor(modelItem => item.Huoltajat.Sukunimi)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Huoltajat.Puhelinnumero)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Huoltajat.Osoite)</td>
+                </tr>
 
 
 
@@ -80,3 +83,56 @@
     </table>
     <div><a class="btn btn-danger" href="/Kortti/Index">Takaisin</a></div>
 </div>
+
+@foreach (var item in Model)
+{
+
+    var kuvalupa = "";
+    var syntymaika = item.SyntymaAika.ToString("dd.MM.yyyy");
+    var allergia = "Allergiat : " + item.Allergiat;
+    var colori = "bg-danger";
+    if (item.Allergiat == null)
+    {
+        allergia = "Ei ole tietioa allergiasta";
+        colori = "bg-success";
+    }
+    if (item.Kuvauslupa.ToString() == "True")
+    {
+        kuvalupa = "Saa otta kuva";
+
+    }
+    else
+    {
+        kuvalupa = "ei saa otaa kuva";
+    }
+    <div class="card mb-3">
+        <h3 class="card-header text-center bg-info">Huoltaja, ID @item.Huoltajat.HuoltajaId </h3>
+        <div class="card-body bg-warning">
+            <h5 class="card-title">Huoltajan Nimi :  @item.Huoltajat.Etunimi  @item.Huoltajat.Sukunimi</h5>
+            <h6 class="card-title">Huoltajan puhelin  @item.Huoltajat.Puhelinnumero</h6>
+            <h6 class="card-subtitle text-muted"> Osoite : @item.Huoltajat.Osoite <br /> @item.Postinumero @item.Postitoimipaikat.Postitoimipaikka</h6>
+        </div>
+        <div class="card-header text-center bg-info">
+            <h3>Nuori, ID @item.NuoriId</h3>
+        </div>
+        <div class="card-body bg-warning">
+            <h5 class="card-title">Nouren Nimi :  @item.Etunimi  @item.Sukunimi</h5>
+            <h6 class="card-title">Nuoren puhelin  @item.Puhelinnumero</h6>
+            <h6 class="card-subtitle text-muted"> Osoite : @item.Osoite <br /> @item.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h6> Käyttäjänimi : @item.Kayttajanimi </h6> </li>
+            <li class="@colori list-group-item"> <h6>  @allergia </h6> </li>
+            <li class="list-group-item"> <h6> Sähköposti : @item.SPosti </h6> </li>
+            <li class="list-group-item"> <h6> Syntymä aika : @syntymaika </h6> </li>
+            <li class="list-group-item"> <h6> @kuvalupa </h6> </li>
+        </ul>
+        <div class="card-body">
+            <div><a class="btn btn-danger" href="/Kortti/Index">Takaisin</a></div>
+        </div>
+        <div class="card-footer text-muted">
+            Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")
+        </div>
+    </div>
+}
+</center>
