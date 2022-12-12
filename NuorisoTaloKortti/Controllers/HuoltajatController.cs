@@ -28,6 +28,36 @@ namespace NuorisoTaloKortti.Controllers
             return RedirectToAction("Loginikkuna", "Home");
         }
 
+        public ActionResult Create()
+        {
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
+            {
+                return View();
+
+            }
+            return RedirectToAction("Loginikkuna", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Create([Bind(Include = "Etunimi, Sukunimi, Puhelinnumero, Osoite, Postinumero")] Huoltajat huoltaja)
+        {
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Huoltajat.Add(huoltaja);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(huoltaja);
+            }
+            
+            return RedirectToAction("Loginikkuna", "Home");
+
+        }
+
         public ActionResult Edit(int? id)
         {
             MessageBox.Show(id.ToString());
