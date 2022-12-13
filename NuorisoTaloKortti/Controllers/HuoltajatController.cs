@@ -32,6 +32,16 @@ namespace NuorisoTaloKortti.Controllers
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
+                var post = db.Postitoimipaikat;
+                IEnumerable<SelectListItem> selectPostList = from p in post
+                                                             select new SelectListItem
+                                                             {
+                                                                 Value = p.Postinumero,
+                                                                 Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                             };
+
+                ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text");
+
                 return View();
 
             }
@@ -51,6 +61,17 @@ namespace NuorisoTaloKortti.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+
+                var post = db.Postitoimipaikat;
+                IEnumerable<SelectListItem> selectPostList = from p in post
+                                                             select new SelectListItem
+                                                             {
+                                                                 Value = p.Postinumero,
+                                                                 Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                             };
+
+                ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", huoltaja.Postinumero);
+
                 return View(huoltaja);
             }
             
@@ -60,23 +81,28 @@ namespace NuorisoTaloKortti.Controllers
 
         public ActionResult Edit(int? id)
         {
-            MessageBox.Show(id.ToString());
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Huoltajat huoltaja = db.Huoltajat.Find(id);
-            if (huoltaja == null) return HttpNotFound();
-            var post = db.Postitoimipaikat;
-            IEnumerable<SelectListItem> selectPostList = from p in post
-                                                         select new SelectListItem
-                                                         {
-                                                             Value = p.Postinumero,
-                                                             Text = p.Postinumero + " " + p.Postitoimipaikka
-                                                         };
-
-            ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", huoltaja.Postinumero);
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
+            {
 
 
+                if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Huoltajat huoltaja = db.Huoltajat.Find(id);
+                if (huoltaja == null) return HttpNotFound();
+                var post = db.Postitoimipaikat;
+                IEnumerable<SelectListItem> selectPostList = from p in post
+                                                             select new SelectListItem
+                                                             {
+                                                                 Value = p.Postinumero,
+                                                                 Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                             };
 
-            return View(huoltaja);
+                ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", huoltaja.Postinumero);
+
+                return View(huoltaja);
+            }
+
+            return RedirectToAction("Loginikkuna", "Home");
+
         }
 
         [HttpPost]
@@ -104,6 +130,35 @@ namespace NuorisoTaloKortti.Controllers
 
             return View(huoltaja);
             
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
+            {
+                if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Huoltajat huoltaja = db.Huoltajat.Find(id);
+                if (huoltaja == null) return HttpNotFound();
+                return View(huoltaja);
+            }
+            return RedirectToAction("Loginikkuna", "Home");
+
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult DeleteConfirmed(int id)
+        {
+            if (Session["Username"] == null)
+            {
+                Huoltajat huoltaja = db.Huoltajat.Find(id);
+                db.Huoltajat.Remove(huoltaja);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Loginikkuna", "Home");
+
         }
     }
 }
