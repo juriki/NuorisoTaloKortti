@@ -41,7 +41,7 @@ namespace NuorisoTaloKortti.Controllers
                                                              Value = p.Postinumero,
                                                              Text = p.Postinumero + " " + p.Postitoimipaikka
                                                          };
-
+         
             ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", huoltaja.Postinumero);
 
 
@@ -53,6 +53,7 @@ namespace NuorisoTaloKortti.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "HuoltajaID, Etunimi, Sukunimi, Puhelinnumero, Osoite, Postinumero")] Huoltajat huoltaja)
         {
+
             
             if (ModelState.IsValid)
             {

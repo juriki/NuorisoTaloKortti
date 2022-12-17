@@ -121,6 +121,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EntityValidationErrorsstem.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HuoltajatController.cs" />
     <Compile Include="Controllers\KorttiController.cs" />
@@ -400,6 +401,8 @@
     <Content Include="wwwroot\js\bootstrap.min.js.map" />
     <Content Include="Views\Kortti\View.cshtml" />
     <Content Include="Views\Kortti\Edit.cshtml" />
+    <Content Include="Views\Kortti\Edit2.cshtml" />
+    <Content Include="Views\Kortti\Addimage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
