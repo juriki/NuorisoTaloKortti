@@ -3,11 +3,14 @@
     ViewBag.Title = "View";
 }
 
-<h2 class="text-center"> Muut Tiedot </h2>
+
+<div class="text-center">
+    <h2> Muut Tiedot</h2>
+</div>
 
 
-@foreach(var item in Model) {
-
+@foreach (var item in Model)
+{
     var kuvalupa = "";
     var syntymaika = item.SyntymaAika.ToString("dd.MM.yyyy");
     var allergia = "Allergiat : " + item.Allergiat;
@@ -39,6 +42,21 @@
         <div class="card-body bg-warning">
             <h5 class="card-title">Nouren Nimi :  @item.Etunimi  @item.Sukunimi</h5>
             <h6 class="card-title">Nuoren puhelin  @item.Puhelinnumero</h6>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @if (item.Kuva != null)
+                    {
+                        var base64 = Convert.ToBase64String(item.Kuva);
+                        var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                        <img src='@imgsrc' style="max-width: 100px;" />
+                    }
+                    else
+                    {
+                        <img src="~/Kuvat/ukkkoKuva.jpg" style="max-height: 100px;" />
+                    }
+                </div>
+                <br />
+            </div>
             <h6 class="card-subtitle text-muted"> Osoite : @item.Osoite <br /> @item.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6>
         </div>
         <ul class="list-group list-group-flush">

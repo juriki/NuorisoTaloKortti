@@ -21,7 +21,7 @@ namespace NuorisoTaloKortti.Controllers
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 List<Huoltajat> model = db.Huoltajat.ToList();
-                MessageBox.Show(model.ToString());
+                //MessageBox.Show(model.ToString());
                 return View(model);
 
             }
@@ -30,7 +30,7 @@ namespace NuorisoTaloKortti.Controllers
 
         public ActionResult Edit(int? id)
         {
-            MessageBox.Show(id.ToString());
+            //MessageBox.Show(id.ToString());
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Huoltajat huoltaja = db.Huoltajat.Find(id);
             if (huoltaja == null) return HttpNotFound();
@@ -41,7 +41,7 @@ namespace NuorisoTaloKortti.Controllers
                                                              Value = p.Postinumero,
                                                              Text = p.Postinumero + " " + p.Postitoimipaikka
                                                          };
-
+         
             ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", huoltaja.Postinumero);
 
 
@@ -53,6 +53,7 @@ namespace NuorisoTaloKortti.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "HuoltajaID, Etunimi, Sukunimi, Puhelinnumero, Osoite, Postinumero")] Huoltajat huoltaja)
         {
+
             
             if (ModelState.IsValid)
             {

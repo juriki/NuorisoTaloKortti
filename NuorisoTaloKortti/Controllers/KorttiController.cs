@@ -8,12 +8,14 @@ using System.Windows;
 using System.Windows.Forms;
 using NuorisoTaloKortti.Models;
 using System.Net;
+using System.IO;
 // List Generator
 
 namespace NuorisoTaloKortti.Controllers
 {
     public class KorttiController : Controller
     {
+        NuorisokorttiEntities db = new NuorisokorttiEntities();
         // GET: Kortti
         public ActionResult Index()
         {
@@ -24,12 +26,12 @@ namespace NuorisoTaloKortti.Controllers
 
                 List<Nuoret> model = db.Nuoret.ToList();
 
-
                 foreach (var item in model)
                 {
                     if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
                     {
                         var newlist = model.Where(x => x.Kayttajanimi.Contains(Session["Kayttajanimi"].ToString()));
+                        //var newlist2 = model.Where(x => x.Kayttajanimi.Contains(db.Postitoimipaikat.ToString()));
                         return View(newlist);
                     }
                 }
@@ -47,7 +49,6 @@ namespace NuorisoTaloKortti.Controllers
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
                 NuorisokorttiEntities db = new NuorisokorttiEntities();
-
                 List<Nuoret> model = db.Nuoret.ToList();
 
 
@@ -71,25 +72,53 @@ namespace NuorisoTaloKortti.Controllers
 
         public ActionResult Edit(int? id)
         {
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
+                {
+                    List<Nuoret> model = db.Nuoret.ToList();
+                if (id == null)
+                {
+                    return HttpNotFound();
+                }
 
-            NuorisokorttiEntities db = new NuorisokorttiEntities();
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Nuoret nuoret = db.Nuoret.Find(id);
-            if (nuoret == null) return HttpNotFound();
-            return View(nuoret);
-        }
-        NuorisokorttiEntities db = new NuorisokorttiEntities();
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Etunimi,Sukunimi,Puhelinnumero")] Nuoret nuoret)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(nuoret).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Nuoret nuoret = db.Nuoret.Find(id);
+                if (nuoret != null) 
+                {
+                    SelectList huoltaja = new SelectList(db.Huoltajat, "HuoltajaId","Huoltaja", nuoret.Huoltaja);
+                    ViewBag.Huoltajat = huoltaja;   
+                    return View(nuoret);
+                }
+                return View(model);
             }
-        return View(nuoret);    
+            else
+            {
+                return RedirectToAction("Loginikkuna", "Home");
+            }
+        }
+
+
+        
+
+        [HttpPost]
+        public ActionResult Edit(int? id, HttpPostedFileBase image1)
+        {
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
+            {
+                    List<Nuoret> model = db.Nuoret.ToList();
+                Nuoret nuoret = db.Nuoret.Find(id);
+                if (ModelState.IsValid && image1 != null)
+                {
+                    byte[] filebyte = new byte[image1.ContentLength];
+                    image1.InputStream.Read(filebyte, 0, image1.ContentLength);
+                    nuoret.Kuva = filebyte;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+                }
+            else
+            {
+                return RedirectToAction("Loginikkuna", "Home");
+            }
         }
     }
 }
