@@ -10,11 +10,10 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Sinun Kuvasi</h4>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.NuoriId)
 
-            <h5 class="card-title">Nimi : @Model.Etunimi @Model.Sukunimi</h5>
+        <h5 class="card-title"> Sinun Kuvasi : @Model.Etunimi @Model.Sukunimi</h5>
 
             <div class="form-group">
                 <div class="col-md-10">
@@ -30,7 +29,7 @@
                     }
                 </div>
             </div>
-
+            <br />
             <form action="/" method="post"></form>
             <form method="post" enctype="multipart/form-data">
                 <input type="file" name="image1"  />
