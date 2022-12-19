@@ -4,7 +4,6 @@
 }
 
 
-
 <div class="text-center">
     <h2> Muut Tiedot</h2>
 </div>
@@ -12,7 +11,6 @@
 
 @foreach (var item in Model)
 {
-
     var kuvalupa = "";
     var syntymaika = item.SyntymaAika.ToString("dd.MM.yyyy");
     var allergia = "Allergiat : " + item.Allergiat;
@@ -75,5 +73,5 @@
             Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")
         </div>
     </div>
-}
+    }
 </center>
