@@ -38,14 +38,13 @@
                     <div class="col-md-10">
                         @if (item.Kuva != null)
                         {
-                            <img src="data:image/jpg;base64,@item.Kuva" alt="Red dot" />
                             var base64 = Convert.ToBase64String(item.Kuva);
                             var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-                            <img src='@imgsrc' style="max-height: 200px;" />
+                            <img src='@imgsrc' style="max-width: 407px;" />
                         }
                         else
                         {
-                            <img src="~/Kuvat/ukkkoKuva.jpg" style="max-height: 200px;" />
+                            <img src="~/Kuvat/ukkkoKuva.jpg" style="max-height: 350px;" />
                         }
                     </div>
                 </div>
@@ -65,7 +64,7 @@
 
             </div>
 
-            @Html.ActionLink("Edit", "Edit", new { id = item.NuoriId })
+            @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId })
         }
 
     }

@@ -4,70 +4,44 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<center>
+    @using (Html.BeginForm("Edit", "Kortti", FormMethod.Post, new { encypte = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm("Edit","Kortti",FormMethod.Post, new {encypte="multipart/form-data"}))
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Nuoret</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.NuoriId)
-    @Html.HiddenFor(model => model.Postinumero)
-    @Html.HiddenFor(model => model.Kuvauslupa)
-    @Html.HiddenFor(model => model.Aktivointi)
-    @Html.HiddenFor(model => model.Kayttajanimi)
-    @Html.HiddenFor(model => model.SyntymaAika)
-    @Html.HiddenFor(model => model.Puhelinnumero)
-    @Html.HiddenFor(model => model.Osoite)
-    @Html.HiddenFor(model => model.Huoltaja)
-    @Html.HiddenFor(model => model.SPosti)
-    @Html.HiddenFor(model => model.Allergiat)
-    @Html.HiddenFor(model => model.Kuva)
-    <div class="form-group">
-        @Html.LabelFor(model => model.Etunimi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Etunimi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Etunimi, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4>Sinun Kuvasi</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.NuoriId)
+
+            <h5 class="card-title">Nimi : @Model.Etunimi @Model.Sukunimi</h5>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @if (Model.Kuva != null)
+                    {
+                        var base64 = Convert.ToBase64String(Model.Kuva);
+                        var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                        <img src='@imgsrc' style="max-width: 300px;" />
+                    }
+                    else
+                    {
+                        <img src="~/Kuvat/ukkkoKuva.jpg" style="max-height: 200px;" />
+                    }
+                </div>
+            </div>
+
+            <form action="/" method="post"></form>
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="image1"  />
+                <br />
+                <br />
+                <input type="submit" value="Save" class="btn btn-success" />
+            </form>
         </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Sukunimi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Sukunimi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Sukunimi, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Kuva, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @if (Model.Kuva != null)
-            {
-                var base64 = Convert.ToBase64String(Model.Kuva);
-                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-                <img src='@imgsrc' style="max-height: 200px;" />
-            }
-            else
-            {
-                <img src="~/Kuvat/ukkkoKuva.jpg" style="max-height: 200px;" />
-            }
-        </div>
-    </div>
-    <form action="/" method="post"></form>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="image1" />
-        <input type="submit" value="Save" class="btn btn-default" />
-    </form>
-</div>
 
 
 
 
-}
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    }
+</center>

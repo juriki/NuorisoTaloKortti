@@ -72,22 +72,28 @@ namespace NuorisoTaloKortti.Controllers
 
         public ActionResult Edit(int? id)
         {
-            List<Nuoret> model = db.Nuoret.ToList();
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
+                {
+                    List<Nuoret> model = db.Nuoret.ToList();
+                if (id == null)
+                {
+                    return HttpNotFound();
+                }
 
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Nuoret nuoret = db.Nuoret.Find(id);
-            if (nuoret != null) 
-            {
-                SelectList huoltaja = new SelectList(db.Huoltajat, "HuoltajaId","Huoltaja", nuoret.Huoltaja);
-                MessageBox.Show(nuoret.Kuva.ToString());
-                ViewBag.Huoltajat = huoltaja;   
-                return View(nuoret);
+                if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Nuoret nuoret = db.Nuoret.Find(id);
+                if (nuoret != null) 
+                {
+                    SelectList huoltaja = new SelectList(db.Huoltajat, "HuoltajaId","Huoltaja", nuoret.Huoltaja);
+                    ViewBag.Huoltajat = huoltaja;   
+                    return View(nuoret);
+                }
+                return View(model);
             }
-            return View(model);
+            else
+            {
+                return RedirectToAction("Loginikkuna", "Home");
+            }
         }
 
 
@@ -96,97 +102,23 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         public ActionResult Edit(int? id, HttpPostedFileBase image1)
         {
-
-            if (ModelState.IsValid)
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
+                    List<Nuoret> model = db.Nuoret.ToList();
                 Nuoret nuoret = db.Nuoret.Find(id);
-                int count =  Request.Files.Count;
-                var file = image1;
-                string filename = file.FileName;
-                byte[] buffer = new byte[file.InputStream.Length];  
-                file.InputStream.Read(buffer, 0, (int)file.InputStream.Length);
+                if (ModelState.IsValid && image1 != null)
+                {
+                    byte[] filebyte = new byte[image1.ContentLength];
+                    image1.InputStream.Read(filebyte, 0, image1.ContentLength);
+                    nuoret.Kuva = filebyte;
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
-
-                nuoret.Kuva = image1;
-                db.SaveChanges();
+                }
+            else
+            {
+                return RedirectToAction("Loginikkuna", "Home");
             }
-            return RedirectToAction("Index");
         }
     }
 }
-/*
- 
-         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NuoriId,Etunimi,Sukunimi,SyntymaAika,Puhelinnumero,Osoite,Postinumero,Huoltaja,SPosti,Allergiat,Kuvauslupa,Aktivointi,Kuva,Kayttajanimi")] Nuoret nuoret)
-        {
-            NuorisokorttiEntities db = new NuorisokorttiEntities();
-   
-
-            if (ModelState.IsValid)
-            {
-                int coun = Request.Files.Count;
-                var file = Request.Files[0];
-
-                string filename = file.FileName;
-                MessageBox.Show(filename.ToString());
-                byte[] buffer = new byte[file.InputStream.Length];
-                file.InputStream.Read(buffer, 0, (int)file.InputStream.Length);
-
-                db.Entry(nuoret).State = EntityState.Modified;
-                nuoret.Kuva = buffer;
-                //nuoret.Kuva = filename;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-
-            }
-            return View(nuoret);
-        }
- 
-
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(NuorisokorttiEntities model,HttpPostedFileBase kuva1) 
-        { 
-            var db1 = new NuorisokorttiEntities();
-   
-
-            if (kuva1 == null)
-            {
-                model.Nuoret = new byte[kuva1.ContentLength];
-                kuva1.InputStream.Read(model.Nuoret,0 kuva1.);
-            }
-            return View();
-        }
-    }
-}
-
-
-
-
-*/
-
-
-
-
-
-
-/*
-
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(NuorisokorttiEntities model,HttpPostedFileBase kuva1) 
-        { 
-            var db1 = new NuorisokorttiEntities();
-   
-
-            if (kuva1 == null)
-            {
-                model.k   
-            }
-            return View();
-        }
- */
