@@ -83,6 +83,7 @@ namespace NuorisoTaloKortti.Controllers
             if (nuoret != null) 
             {
                 SelectList huoltaja = new SelectList(db.Huoltajat, "HuoltajaId","Huoltaja", nuoret.Huoltaja);
+                MessageBox.Show(nuoret.Kuva.ToString());
                 ViewBag.Huoltajat = huoltaja;   
                 return View(nuoret);
             }
@@ -93,14 +94,21 @@ namespace NuorisoTaloKortti.Controllers
         
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Nuoret nuoret, byte[] kuva)
+        public ActionResult Edit(int? id, HttpPostedFileBase image1)
         {
+
             if (ModelState.IsValid)
-            { 
-                db.Entry(nuoret).State = EntityState.Modified;
+            {
+                Nuoret nuoret = db.Nuoret.Find(id);
+                int count =  Request.Files.Count;
+                var file = image1;
+                string filename = file.FileName;
+                byte[] buffer = new byte[file.InputStream.Length];  
+                file.InputStream.Read(buffer, 0, (int)file.InputStream.Length);
+                return RedirectToAction("Index");
+
+                nuoret.Kuva = image1;
                 db.SaveChanges();
-                return View(nuoret);
             }
             return RedirectToAction("Index");
         }

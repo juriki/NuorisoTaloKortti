@@ -48,8 +48,6 @@
             @if (Model.Kuva != null)
             {
                 var base64 = Convert.ToBase64String(Model.Kuva);
-                <img src="data:image/jpg;base64,@Model.Kuva" alt="Red dot" />
-
                 var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
                 <img src='@imgsrc' style="max-height: 200px;" />
             }
@@ -59,25 +57,11 @@
             }
         </div>
     </div>
-
-    <div class="col-md-10">
-        @if (Model.Kuva != null)
-        {
-            var base64 = Convert.ToBase64String(Model.Kuva);
-            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-            <img src='@imgsrc' style="max-height: 200px;" />
-        }
-        else
-        {
-            <img src="~/Kuvat/ukkkoKuva.jpg" style="max-height: 200px;" />
-        }
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
+    <form action="/" method="post"></form>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image1" />
+        <input type="submit" value="Save" class="btn btn-default" />
+    </form>
 </div>
 
 
