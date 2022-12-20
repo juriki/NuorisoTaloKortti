@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows.Forms;
 
 namespace NuorisoTaloKortti.Controllers
 {
@@ -67,6 +68,7 @@ namespace NuorisoTaloKortti.Controllers
             var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == kayttajat.Salasana);
             if (LoggedUser != null)
             {
+
                 ViewBag.LoginMessage = "Successfull login";
                 Session["Yllapito"] = LoggedUser.Yllapito;
                 Session["KayttajaId"] = LoggedUser.KayttajaId;
@@ -85,11 +87,10 @@ namespace NuorisoTaloKortti.Controllers
                 ViewBag.LoginMessage = "Login unsuccessfull";
                 ViewBag.LoggedStatus = "Out";
                 kayttajat.LoginErrorMessage = "Tuntematon käyttäjätunnus tai salasana.";
-          //      return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
                 return View("LoginIkkuna",kayttajat);
             }
         }
-
 
         public ActionResult LogOut()
         {

@@ -61,7 +61,10 @@
                 </div>
 
             </div>
-            @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
+            @if (item.Aktivointi.ToString() == "True")
+            { 
+                @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
+            }
         </center>
 
 
