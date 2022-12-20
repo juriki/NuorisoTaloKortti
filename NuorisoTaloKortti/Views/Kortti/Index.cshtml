@@ -30,7 +30,7 @@
                 }
         </style>
         <center>
-            <div class="shadow-lg p-3 mb-5 bg-body rounded; card mb-3" style=" text-align: center; padding: 1px; max-width: 25rem;">
+            <div class="h-50; shadow-lg p-3 mb-5 bg-body rounded; card mb-1" style=" text-align: center; padding: 1px; max-width: 25rem;">
                 <h3 class="card-header" style="margin-top: 1px; background-color:#B71234">Nuoriso Korti</h3>
                 <div style="background-color: #ffed00;" class="card-body; padding: 15px;">
                     <h5 class="card-title">Nimi : @item.Etunimi @item.Sukunimi</h5>
@@ -49,16 +49,14 @@
                         }
                     </div>
                 </div>
-                <img class="pictur" style="margin-top: -120px; margin-left: 30px;" src="/Kuvat/Varo iloista Askolaa.png" width="130px" height="auto" />
+                <img class="  pictur" style="margin-top: -120px; margin-left: 30px;" src="/Kuvat/Varo iloista Askolaa.png" width="130px" height="auto" />
                 <div class="card-body">
                     <h5 class="card-text" style="padding: 1px;">Puhelin numero : @item.Puhelinnumero </h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><h6>Nuoresta @kuvalupa</h6></li>
                 </ul>
-                <div>
-                    <a class="btn btn-success" href="/Kortti/View" style="padding: 3px; margin: 1px;">Muut tiedot</a>
-                </div>
+
                 <div style="background-color: #B71234; opacity: .7; padding: 1px;" class="card-footer text-muted">
                     <p style="color: black; opacity: 1"> Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")</p>
                 </div>

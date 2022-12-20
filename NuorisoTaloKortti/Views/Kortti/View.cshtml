@@ -5,72 +5,98 @@
 
 
 <div class="text-center">
-    <h2> Muut Tiedot</h2>
+    <h2> Minusta</h2>
 </div>
+<center>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                var kuvalupa = "";
+                var syntymaika = item.SyntymaAika.ToString("dd.MM.yyyy");
+                var allergia = "Allergiat : " + item.Allergiat;
+                var colori = "bg-danger";
+                if (item.Allergiat == null)
+                {
+                    allergia = "Ei ole tietioa allergiasta";
+                    colori = "bg-success";
+                }
+                if (item.Kuvauslupa.ToString() == "True")
+                {
+                    kuvalupa = "Saa otta kuva";
+
+                }
+                else
+                {
+                    kuvalupa = "ei saa otaa kuva";
+                }
+                if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
+                {
+                    <style>
+                        .pictur {
+                            transform: scale(1);
+                            transition: 2s all;
+                        }
+
+                            .pictur:hover {
+                                transform: rotate(-90deg) scale(1);
+                            }
+                    </style>
+                    <div class="col-lg">
+                        <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded; card mb-1" style=" text-align: center; padding: 1px; max-width: 25rem;">
+                            <div>
+                                <h3 class="card-header" style="margin-top: 1px; background-color:#B71234">Huoltaja id:  @item.Huoltajat.HuoltajaId</h3>
+                                <div style="background-color: #ffed00;" class="card-body; padding: 15px;">
+                                    <h5 class="card-title">Nimi : @item.Huoltajat.Etunimi @item.Sukunimi</h5>
+
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h5>Puhelinnumero : @item.Huoltajat.Puhelinnumero</h5></li>
+                                    </ul>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h6>Osoite : @item.Osoite <br /> @item.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded; card mb-1" style=" text-align: center; padding: 1px; max-width: 25rem;">
+                            <div>
+                                <h3 class="card-header" style="margin-top: 1px; background-color:#B71234">Nuori id:  @item.NuoriId</h3>
+                                <div style="background-color: #ffed00;" class="card-body; padding: 15px;">
+                                    <h5 class="card-title">Nimi : @item.Etunimi @item.Sukunimi</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-text" style="padding: 1px;">Puhelinnumero : @item.Puhelinnumero </h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h6>Käyttäjänimi : @item.Kayttajanimi</h6></li>
+                                    </ul>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h6> Sähköposti : @item.SPosti </h6></li>
+                                    </ul>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h6>Syntymä aika : @syntymaika</h6></li>
+                                    </ul>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item" style="background-color: @colori"><h6>@allergia</h6></li>
+                                    </ul>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h6>Nuoresta @kuvalupa</h6></li>
+                                    </ul>
+                                    <p class="list-group-item"><h6>Osoite : @item.Huoltajat.Osoite <br /> @item.Huoltajat.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="btn btn-danger" href="/Kortti/Index">Takaisin</a>
+                    </div>
 
 
-@foreach (var item in Model)
-{
-    var kuvalupa = "";
-    var syntymaika = item.SyntymaAika.ToString("dd.MM.yyyy");
-    var allergia = "Allergiat : " + item.Allergiat;
-    var colori = "bg-danger";
-    if (item.Allergiat == null)
-    {
-        allergia = "Ei ole tietioa allergiasta";
-        colori = "bg-success";
-    }
-    if (item.Kuvauslupa.ToString() == "True")
-    {
-        kuvalupa = "Saa otta kuva";
+                }
 
-    }
-    else
-    {
-        kuvalupa = "ei saa otaa kuva";
-    }
-    <div class="card mb-3">
-        <h3 class="card-header text-center bg-info">Huoltaja, ID @item.Huoltajat.HuoltajaId </h3>
-        <div class="card-body bg-warning">
-            <h5 class="card-title">Huoltajan Nimi :  @item.Huoltajat.Etunimi  @item.Huoltajat.Sukunimi</h5>
-            <h6 class="card-title">Huoltajan puhelin  @item.Huoltajat.Puhelinnumero</h6>
-            <h6 class="card-subtitle text-muted"> Osoite : @item.Huoltajat.Osoite <br /> @item.Postinumero @item.Postitoimipaikat.Postitoimipaikka</h6>
-        </div>
-        <div class="card-header text-center bg-info">
-            <h3>Nuori, ID @item.NuoriId</h3>
-        </div>
-        <div class="card-body bg-warning">
-            <h5 class="card-title">Nouren Nimi :  @item.Etunimi  @item.Sukunimi</h5>
-            <h6 class="card-title">Nuoren puhelin  @item.Puhelinnumero</h6>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @if (item.Kuva != null)
-                    {
-                        var base64 = Convert.ToBase64String(item.Kuva);
-                        var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-                        <img src='@imgsrc' style="max-width: 100px;" />
-                    }
-                    else
-                    {
-                        <img src="~/Kuvat/ukkkoKuva.jpg" style="max-height: 100px;" />
-                    }
-                </div>
-                <br />
-            </div>
-            <h6 class="card-subtitle text-muted"> Osoite : @item.Osoite <br /> @item.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h6> Käyttäjänimi : @item.Kayttajanimi </h6> </li>
-            <li class="@colori list-group-item"> <h6>  @allergia </h6> </li>
-            <li class="list-group-item"> <h6> Sähköposti : @item.SPosti </h6> </li>
-            <li class="list-group-item"> <h6> Syntymä aika : @syntymaika </h6> </li>
-            <li class="list-group-item"> <h6> @kuvalupa </h6> </li>
-        </ul>
-        <div class="card-body">
-            <div><a class="btn btn-danger" href="/Kortti/Index">Takaisin</a></div>
-        </div>
-        <div class="card-footer text-muted">
-            Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")
+            }
+
         </div>
     </div>
-    }
+</center>
