@@ -5,8 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/wwwroot/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js"></script>
+
+
+    <style>
+        body1::before {
+            content: '';
+            position: fixed;
+            left: 0;
+            right: 0; 
+            top: 0;
+            bottom: 0; 
+            z-index: -1; 
+            background: url("/Kuvat/Varo iloista Askolaa.png") center / cover no-repeat;
+            filter: blur(20px) brightness(95%);         
+        }
+        body {}
+    </style>
 </head>
-<body>
+
+
+<body  class="test">
     <div>
     @{
 

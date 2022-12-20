@@ -4,43 +4,44 @@
     ViewBag.Title = "View";
 }
 
-<center>
-    @foreach (var item in Model)
+
+@foreach (var item in Model)
+{
+    var kuvalupa = "";
+
+    if (item.Kuvauslupa.ToString() == "True")
     {
-        var kuvalupa = "";
+        kuvalupa = "saa otta kuva !";
+    }
+    else
+    {
+        kuvalupa = "ei saa otaa kuva !";
+    }
+    if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
+    {
+        <style>
+            .pictur {
+                transform: scale(1);
+                transition: 2s all;
+            }
 
-        if (item.Kuvauslupa.ToString() == "True")
-        {
-            kuvalupa = "saa otta kuva !";
-        }
-        else
-        {
-            kuvalupa = "ei saa otaa kuva !";
-        }
-        if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
-        {
-            <style>
-                .pictur {
-                    transform: scale(1);
-                    transition: 2s all;
+                .pictur:hover {
+                    transform: rotate(-90deg) scale(1);
                 }
-
-                    .pictur:hover {
-                        transform: rotate(-90deg) scale(1);
-                    }
-            </style>
-            <div class="card mb-3" style="width: 410px; text-align: center; margin-top: 25px;">
-                <h3 class="card-header" style="background-color:#B71234">Nuoriso Korti</h3>
+        </style>
+        <center>
+            <div class="h-50; shadow-lg p-3 mb-5 bg-body rounded; card mb-1" style=" text-align: center; padding: 1px; max-width: 25rem;">
+                <h3 class="card-header" style="margin-top: 1px; background-color:#B71234">Nuoriso Korti</h3>
                 <div style="background-color: #ffed00;" class="card-body; padding: 15px;">
                     <h5 class="card-title">Nimi : @item.Etunimi @item.Sukunimi</h5>
                 </div>
                 <div class="text-center" style="background-color: gray">
-                    <div class="col-md-10">
+                    <div>
                         @if (item.Kuva != null)
                         {
                             var base64 = Convert.ToBase64String(item.Kuva);
                             var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-                            <img src='@imgsrc' style="max-width: 407px;" />
+                            <img src='@imgsrc' style="max-width: 100%" />
                         }
                         else
                         {
@@ -48,26 +49,22 @@
                         }
                     </div>
                 </div>
-                <img class="pictur" style="margin-top: -120px; margin-left: 30px;" src="/Kuvat/Varo iloista Askolaa.png" width="130px" height="auto" />
+                <img class="  pictur" style="margin-top: -120px; margin-left: 30px;" src="/Kuvat/Varo iloista Askolaa.png" width="130px" height="auto" />
                 <div class="card-body">
                     <h5 class="card-text" style="padding: 1px;">Puhelin numero : @item.Puhelinnumero </h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><h6>Nuoresta @kuvalupa</h6></li>
                 </ul>
-                <div class="card-body">
-                    <a class="btn btn-success" href="/Kortti/View" style="padding: 3px; margin: 1px;">Muut tiedot</a>
-                </div>
                 <div style="background-color: #B71234; opacity: .7; padding: 1px;" class="card-footer text-muted">
                     <p style="color: black; opacity: 1"> Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")</p>
                 </div>
 
             </div>
+            @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
+        </center>
 
-            @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId })
-        }
 
     }
 
-
-</center>
+}
