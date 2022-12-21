@@ -60,9 +60,15 @@
                 <div style="background-color: #B71234; opacity: .7; padding: 1px;" class="card-footer text-muted">
                     <p style="color: black; opacity: 1"> Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")</p>
                 </div>
-
+                @if (true)
+                {
+                    @Html.ActionLink("Vaihda Salasana", "PsswordChange", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
+                }
             </div>
-            @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
+            @if (item.Aktivointi.ToString() == "True")
+            { 
+                @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
+            }
         </center>
 
 
