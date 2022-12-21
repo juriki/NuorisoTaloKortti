@@ -140,6 +140,11 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         public ActionResult PsswordChange([Bind(Include = "KayttajaId,Kayttajanimi, Salasana, ErrorMessage,uusiSalasana,ToistaSalasana")] Kayttajat kayttajat)
         {
+
+            List<Kayttajat> model = db.Kayttajat.ToList();
+            Kayttajat kay  = db.Kayttajat.Find(kayttajat.KayttajaId);
+
+            MessageBox.Show(kay.Salasana.ToString());
             if (kayttajat.uusiSalasana.Length < 8 )
             {
                 kayttajat.LoginErrorMessage = "Salasana Pitä olla vähintäin 8 merkkinen";
@@ -152,9 +157,9 @@ namespace NuorisoTaloKortti.Controllers
                     MessageBox.Show(kayttajat.uusiSalasana.ToString());
                     return View(kayttajat);
                 }
-                if(kayttajat.Salasana == null) 
+                if(kayttajat.Salasana == null || kay.Salasana != kayttajat.Salasana) 
                 {
-                    kayttajat.LoginErrorMessage = "Vanha salasanpuuttu";
+                    kayttajat.LoginErrorMessage = "Vanha salasana puuttu tai väärin kirjoitettu";
                     return View(kayttajat);
                 }
                 db.Entry(kayttajat).State = EntityState.Modified;
