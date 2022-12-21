@@ -120,5 +120,50 @@ namespace NuorisoTaloKortti.Controllers
                 return RedirectToAction("Loginikkuna", "Home");
             }
         }
+
+
+        public ActionResult PsswordChange(int? id)
+        {
+            List<Nuoret> model = db.Nuoret.ToList();
+            Nuoret nuoret = db.Nuoret.Find(id);
+            List<Kayttajat> model2 = db.Kayttajat.ToList();
+            foreach (var mode in model2)
+            {
+                if (nuoret.Kayttajanimi.ToString() == mode.Kayttajanimi)
+                {
+                    return View (mode);
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PsswordChange([Bind(Include = "KayttajaId,Kayttajanimi, Salasana, ErrorMessage,uusiSalasana,ToistaSalasana")] Kayttajat kayttajat)
+        {
+            if (kayttajat.uusiSalasana.Length < 8 )
+            {
+                kayttajat.LoginErrorMessage = "Salasana Pitä olla vähintäin 8 merkkinen";
+                return View(kayttajat);
+            }
+
+                if (kayttajat.uusiSalasana != kayttajat.ToistaSalasana)
+                {
+                    kayttajat.LoginErrorMessage = "Salasanat eivät täsmä";
+                    MessageBox.Show(kayttajat.uusiSalasana.ToString());
+                    return View(kayttajat);
+                }
+                if(kayttajat.Salasana == null) 
+                {
+                    kayttajat.LoginErrorMessage = "Vanha salasanpuuttu";
+                    return View(kayttajat);
+                }
+                db.Entry(kayttajat).State = EntityState.Modified;
+                kayttajat.Salasana = kayttajat.ToistaSalasana;
+                db.SaveChanges();
+                kayttajat.LoginErrorMessage = "Salasana Vaihdettu";
+                return View(kayttajat);
+        }
+
+
     }
 }

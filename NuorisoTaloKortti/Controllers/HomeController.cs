@@ -20,7 +20,7 @@ namespace NuorisoTaloKortti.Controllers
             }
             else if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-                return RedirectToAction("About", "Home");
+                return RedirectToAction("Index", "Kortti");
             }
 
             else 
