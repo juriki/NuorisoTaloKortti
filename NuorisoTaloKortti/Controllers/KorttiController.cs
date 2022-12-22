@@ -141,7 +141,7 @@ namespace NuorisoTaloKortti.Controllers
         public ActionResult PsswordChange([Bind(Include = "KayttajaId,Kayttajanimi, Salasana, ErrorMessage,uusiSalasana,ToistaSalasana")] Kayttajat kayttajat)
         {
 
-            if (kayttajat.uusiSalasana.Length < 8)
+            if (kayttajat.uusiSalasana == null || kayttajat.uusiSalasana.Length < 8)
             {
                 kayttajat.LoginErrorMessage = "Salasana Pitä olla vähintäin 8 merkkinen";
                 return View(kayttajat);
