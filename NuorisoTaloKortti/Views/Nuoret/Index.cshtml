@@ -42,7 +42,20 @@
         <td>@Html.DisplayFor(modelItem => item.Osoite)</td>
         <td>@Html.DisplayFor(modelItem => item.Postitoimipaikat.Postinumero)
             @Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)</td>
-        <td>@Html.DisplayFor(modelItem => item.Kuva)</td>
+        <td>
+            <div>
+                @if (item.Kuva != null)
+                {
+                    var base64 = Convert.ToBase64String(item.Kuva);
+                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    <img src='@imgsrc' style="max-width: 100px" />
+                }
+                else
+                {
+                    <img src="~/Kuvat/ukkkoKuva.jpg" style="max-width: 100px;" />
+                }
+            </div>
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.NuoriId }) |
             @Html.ActionLink("Details", "Details", new { id=item.NuoriId }) |
