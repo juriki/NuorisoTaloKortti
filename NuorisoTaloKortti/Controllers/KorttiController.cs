@@ -50,6 +50,8 @@ namespace NuorisoTaloKortti.Controllers
             {
                 NuorisokorttiEntities db = new NuorisokorttiEntities();
                 List<Nuoret> model = db.Nuoret.ToList();
+
+
                 foreach (var item in model)
                 {
                     if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
@@ -70,16 +72,16 @@ namespace NuorisoTaloKortti.Controllers
 
         public ActionResult Edit(int? id)
         {
-            List<Nuoret> model = db.Nuoret.ToList();
-            Nuoret nuoret = db.Nuoret.Find(id);
-            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False" && nuoret.Aktivointi.ToString() == "True")
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
                 {
+                    List<Nuoret> model = db.Nuoret.ToList();
                 if (id == null)
                 {
                     return HttpNotFound();
                 }
 
                 if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Nuoret nuoret = db.Nuoret.Find(id);
                 if (nuoret != null) 
                 {
                     SelectList huoltaja = new SelectList(db.Huoltajat, "HuoltajaId","Huoltaja", nuoret.Huoltaja);
@@ -100,13 +102,11 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         public ActionResult Edit(int? id, HttpPostedFileBase image1)
         {
-            
-            List<Nuoret> model = db.Nuoret.ToList();
-            Nuoret nuoret = db.Nuoret.Find(id);
-            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False" && nuoret.Aktivointi.ToString() == "True")
+            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-
-                if (ModelState.IsValid && image1 != null && nuoret.Aktivointi.ToString() == "True" )
+                    List<Nuoret> model = db.Nuoret.ToList();
+                Nuoret nuoret = db.Nuoret.Find(id);
+                if (ModelState.IsValid && image1 != null)
                 {
                     byte[] filebyte = new byte[image1.ContentLength];
                     image1.InputStream.Read(filebyte, 0, image1.ContentLength);
