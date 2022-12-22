@@ -401,6 +401,11 @@
     <Content Include="Views\Kortti\View.cshtml" />
     <Content Include="Views\Kortti\Edit.cshtml" />
     <Content Include="Views\Kortti\PsswordChange.cshtml" />
+    <Content Include="Views\Huoltajat\Create.cshtml" />
+    <Content Include="Views\Huoltajat\Delete.cshtml" />
+    <Content Include="Views\Nuoret\Create.cshtml" />
+    <Content Include="Views\Nuoret\Edit.cshtml" />
+    <Content Include="Views\Nuoret\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
