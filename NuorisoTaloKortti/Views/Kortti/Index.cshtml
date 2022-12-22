@@ -65,10 +65,7 @@
                     @Html.ActionLink("Vaihda Salasana", "PsswordChange", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
                 }
             </div>
-            @if (item.Aktivointi.ToString() == "True")
-            { 
-                @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
-            }
+            @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
         </center>
 
 
