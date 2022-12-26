@@ -63,10 +63,17 @@ namespace NuorisoTaloKortti.Controllers
         public ActionResult Authorize(Kayttajat kayttajat)
         {
             NuorisokorttiEntities db = new NuorisokorttiEntities();
+            PasswordHash password = new PasswordHash();
+            string passwordHash = password.encodePassword(kayttajat.Salasana);
             //Haetaan käyttäjän/Loginin tiedot annetuilla tunnustiedoilla tietokannasta LINQ -kyselyllä
-            var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == kayttajat.Salasana);
+            var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == passwordHash);
             if (LoggedUser != null)
             {
+                Session["Salasana"] = "false";
+                if (LoggedUser.Salasana.ToString() == "38D0EC0B2A7AB61A8AA11FA145D68EDA")
+                {
+                    Session["Salasana"] = "true";
+                }
                 ViewBag.LoginMessage = "Successfull login";
                 Session["Yllapito"] = LoggedUser.Yllapito;
                 Session["KayttajaId"] = LoggedUser.KayttajaId;

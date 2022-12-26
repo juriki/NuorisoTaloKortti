@@ -22,7 +22,7 @@
           </Key>
           <Property Name="KayttajaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Kayttajanimi" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Salasana" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Salasana" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Yllapito" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Nuoret">
@@ -51,7 +51,7 @@
           <Property Name="Postinumero" Type="nchar" MaxLength="5" Nullable="false" />
           <Property Name="Postitoimipaikka" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Huoltajat__Posti__2F10007B">
+        <Association Name="FK__Huoltajat__Posti__628FA481">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
           <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -63,7 +63,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nuoret__Huoltaja__300424B4">
+        <Association Name="FK__Nuoret__Huoltaja__6A30C649">
           <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="1" />
           <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
           <ReferentialConstraint>
@@ -75,7 +75,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nuoret__Postinum__2E1BDC42">
+        <Association Name="FK__Nuoret__Postinum__6477ECF3">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
           <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
           <ReferentialConstraint>
@@ -92,15 +92,15 @@
           <EntitySet Name="Kayttajat" EntityType="Self.Kayttajat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nuoret" EntityType="Self.Nuoret" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Postitoimipaikat" EntityType="Self.Postitoimipaikat" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Huoltajat__Posti__2F10007B" Association="Self.FK__Huoltajat__Posti__2F10007B">
+          <AssociationSet Name="FK__Huoltajat__Posti__628FA481" Association="Self.FK__Huoltajat__Posti__628FA481">
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Huoltajat" EntitySet="Huoltajat" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nuoret__Huoltaja__300424B4" Association="Self.FK__Nuoret__Huoltaja__300424B4">
+          <AssociationSet Name="FK__Nuoret__Huoltaja__6A30C649" Association="Self.FK__Nuoret__Huoltaja__6A30C649">
             <End Role="Huoltajat" EntitySet="Huoltajat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nuoret__Postinum__2E1BDC42" Association="Self.FK__Nuoret__Postinum__2E1BDC42">
+          <AssociationSet Name="FK__Nuoret__Postinum__6477ECF3" Association="Self.FK__Nuoret__Postinum__6477ECF3">
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
           </AssociationSet>
@@ -129,7 +129,7 @@
           </Key>
           <Property Name="KayttajaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Kayttajanimi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Salasana" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salasana" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Yllapito" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Nuoret">

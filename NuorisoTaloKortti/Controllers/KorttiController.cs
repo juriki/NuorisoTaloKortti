@@ -43,7 +43,9 @@ namespace NuorisoTaloKortti.Controllers
             }
         }
 
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
         public ActionResult View()
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         {
             // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
@@ -62,26 +64,27 @@ namespace NuorisoTaloKortti.Controllers
                 }
                 return RedirectToAction("Loginikkuna", "Home");
             }
-            else
-            {
-                return RedirectToAction("Loginikkuna", "Home");
-            }
+
+            return RedirectToAction("Loginikkuna", "Home");
+
         }
 
 
 
         public ActionResult Edit(int? id)
         {
+            List<Nuoret> model = db.Nuoret.ToList();
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
                 {
-                    List<Nuoret> model = db.Nuoret.ToList();
+
                 if (id == null)
                 {
                     return HttpNotFound();
                 }
 
-                if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 Nuoret nuoret = db.Nuoret.Find(id);
+                if(nuoret.Kayttajanimi != Session["Kayttajanimi"].ToString()) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 if (nuoret != null) 
                 {
                     SelectList huoltaja = new SelectList(db.Huoltajat, "HuoltajaId","Huoltaja", nuoret.Huoltaja);
@@ -126,20 +129,25 @@ namespace NuorisoTaloKortti.Controllers
         {
             List<Nuoret> model = db.Nuoret.ToList();
             Nuoret nuoret = db.Nuoret.Find(id);
+            if(nuoret == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             List<Kayttajat> model2 = db.Kayttajat.ToList();
             foreach (var mode in model2)
             {
-                if (nuoret.Kayttajanimi.ToString() == mode.Kayttajanimi)
+
+                if (nuoret.Kayttajanimi.ToString() == mode.Kayttajanimi && Session["Kayttajanimi"].ToString() == mode.Kayttajanimi.ToString())
                 {
                     return View (mode);
                 }
+                          
             }
-            return View();
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
         [HttpPost]
         public ActionResult PsswordChange([Bind(Include = "KayttajaId,Kayttajanimi, Salasana, ErrorMessage,uusiSalasana,ToistaSalasana")] Kayttajat kayttajat)
         {
+            PasswordHash passw = new PasswordHash();
+            string password;
 
             if (kayttajat.uusiSalasana == null || kayttajat.uusiSalasana.Length < 8)
             {
@@ -159,7 +167,8 @@ namespace NuorisoTaloKortti.Controllers
                 return View(kayttajat);
             }
             db.Entry(kayttajat).State = EntityState.Modified;
-            kayttajat.Salasana = kayttajat.ToistaSalasana;
+            password = passw.encodePassword(kayttajat.ToistaSalasana);
+            kayttajat.Salasana = password;
             db.SaveChanges();
             kayttajat.LoginErrorMessage = "Salasana Vaihdettu";
             return View(kayttajat);
