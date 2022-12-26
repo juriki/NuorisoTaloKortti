@@ -84,6 +84,8 @@
                                         <li class="list-group-item"><h6>Nuoresta @kuvalupa</h6></li>
                                     </ul>
                                     <p class="list-group-item"><h6>Osoite : @item.Huoltajat.Osoite <br /> @item.Huoltajat.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6></p>
+                                    @Html.ActionLink("Vaihda Salasana", "PsswordChange", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
+
                                 </div>
                             </div>
                         </div>

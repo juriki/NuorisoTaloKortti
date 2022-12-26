@@ -156,6 +156,7 @@
     <Compile Include="Models\Postitoimipaikat.cs">
       <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
+    <Compile Include="PasswordHashMd5.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
