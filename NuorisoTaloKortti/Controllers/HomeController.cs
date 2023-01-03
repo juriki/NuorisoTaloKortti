@@ -66,7 +66,7 @@ namespace NuorisoTaloKortti.Controllers
             PasswordHash password = new PasswordHash();
             string passwordHash = password.encodePassword(kayttajat.Salasana);
             //Haetaan käyttäjän/Loginin tiedot annetuilla tunnustiedoilla tietokannasta LINQ -kyselyllä
-            var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == passwordHash);
+            var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == kayttajat.Salasana);
             if (LoggedUser != null)
             {
                 Session["Salasana"] = "false";
