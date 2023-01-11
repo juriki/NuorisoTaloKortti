@@ -70,7 +70,6 @@ namespace NuorisoTaloKortti.Controllers
         }
 
 
-
         public ActionResult Edit(int? id)
         {
             List<Nuoret> model = db.Nuoret.ToList();

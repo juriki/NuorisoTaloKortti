@@ -21,7 +21,6 @@ namespace NuorisoTaloKortti.Controllers
             {
                 return RedirectToAction("Index", "Kortti");
             }
-
             else 
             { 
                 return RedirectToAction("Loginikkuna", "Home");
@@ -66,7 +65,7 @@ namespace NuorisoTaloKortti.Controllers
             PasswordHash password = new PasswordHash();
             string passwordHash = password.encodePassword(kayttajat.Salasana);
             //Haetaan käyttäjän/Loginin tiedot annetuilla tunnustiedoilla tietokannasta LINQ -kyselyllä
-            var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == kayttajat.Salasana);
+            var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == passwordHash);
             if (LoggedUser != null)
             {
                 Session["Salasana"] = "false";
