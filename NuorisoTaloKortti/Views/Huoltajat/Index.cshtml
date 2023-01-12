@@ -9,7 +9,8 @@
 <p>
     @Html.ActionLink("Lisää uusi", "Create")
 </p>
-<table class="table">
+
+<table class="table table-striped table-bordered">
     <tr>
         <th>Nimi</th>
         <th>@Html.DisplayNameFor(model => model.Puhelinnumero)</th>
@@ -18,20 +19,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.DisplayFor(modelItem => item.Etunimi)
-            @Html.DisplayFor(modelItem => item.Sukunimi)</td>
-        <td>@Html.DisplayFor(modelItem => item.Puhelinnumero)</td>
-        <td>@Html.DisplayFor(modelItem => item.Osoite)</td>
-        <td>@Html.DisplayFor(modelItem => item.Postitoimipaikat.Postinumero)
-            @Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)</td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.HuoltajaId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.HuoltajaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.HuoltajaId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etunimi)
+                @Html.DisplayFor(modelItem => item.Sukunimi)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Puhelinnumero)</td>
+            <td>@Html.DisplayFor(modelItem => item.Osoite)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postitoimipaikat.Postinumero)
+                @Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.HuoltajaId }) |
+                @Html.ActionLink("Details", "", new { id = item.HuoltajaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.HuoltajaId })
+            </td>
+        </tr>
+    }
 
 </table>

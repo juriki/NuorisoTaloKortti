@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Lisää nuori", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>Nimi</th>
         <th>Syntymäaika</th>
@@ -58,7 +58,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.NuoriId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.NuoriId }) |
+            @Html.ActionLink("Details", "/oops", new { id=item.NuoriId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.NuoriId })
         </td>
     </tr>

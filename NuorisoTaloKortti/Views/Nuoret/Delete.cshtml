@@ -38,8 +38,21 @@
         <dt>@Html.DisplayNameFor(model => model.Aktivointi)</dt>
         <dd>@Html.DisplayFor(model => model.Aktivointi)</dd>
 
-        <dt>@Html.DisplayNameFor(model => model.Kuva)</dt>
-        <dd>@Html.DisplayFor(model => model.Kuva)</dd>
+        <div style="font-weight: bolder; font-size: larger; color: blue">
+            @Html.LabelFor(model => model.Kuva, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @if (Model.Kuva != null)
+                {
+                    var base64 = Convert.ToBase64String(Model.Kuva);
+                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    <img src='@imgsrc' style="max-width: 300px" />
+                }
+                else
+                {
+                    <img src="~/Kuvat/ukkkoKuva.jpg" style="max-width: 300px;" />
+                }
+            </div>
+        </div>
 
         <dt>@Html.DisplayNameFor(model => model.Kayttajanimi)</dt>
         <dd>@Html.DisplayFor(model => model.Kayttajanimi)</dd>
@@ -53,7 +66,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

@@ -53,7 +53,6 @@ namespace NuorisoTaloKortti.Controllers
                 NuorisokorttiEntities db = new NuorisokorttiEntities();
                 List<Nuoret> model = db.Nuoret.ToList();
 
-
                 foreach (var item in model)
                 {
                     if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
