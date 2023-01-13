@@ -4,18 +4,17 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
+<div class="row col-md-3">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
-        <h4>Huoltajat</h4>
-        <hr />
+        <h4>Lisää Huoltaja</h4>
+        <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        <div style="font-weight: bolder; font-size: larger; color: blue">
             @Html.LabelFor(model => model.Etunimi, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Etunimi, new { htmlAttributes = new { @class = "form-control" } })
@@ -23,7 +22,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div style="font-weight: bolder; font-size: larger; color: blue">
             @Html.LabelFor(model => model.Sukunimi, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Sukunimi, new { htmlAttributes = new { @class = "form-control" } })
@@ -31,7 +30,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div style="font-weight: bolder; font-size: larger; color: blue">
             @Html.LabelFor(model => model.Puhelinnumero, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Puhelinnumero, new { htmlAttributes = new { @class = "form-control" } })
@@ -39,7 +38,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div style="font-weight: bolder; font-size: larger; color: blue">
             @Html.LabelFor(model => model.Osoite, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Osoite, new { htmlAttributes = new { @class = "form-control" } })
@@ -47,26 +46,28 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div style="font-weight: bolder; font-size: larger; color: blue">
             @Html.LabelFor(model => model.Postinumero, "Postinumero", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Postinumero", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Postinumero, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Lisää" class="btn btn-success" />
             </div>
         </div>
     </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div>
+        <br />
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

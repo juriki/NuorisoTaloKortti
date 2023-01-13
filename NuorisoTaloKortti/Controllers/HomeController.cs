@@ -21,7 +21,6 @@ namespace NuorisoTaloKortti.Controllers
             {
                 return RedirectToAction("Index", "Kortti");
             }
-
             else 
             { 
                 return RedirectToAction("Loginikkuna", "Home");
@@ -104,7 +103,12 @@ namespace NuorisoTaloKortti.Controllers
             ViewBag.LoggedStatus = "Out";
             return RedirectToAction("Index", "Home"); //Uloskirjautumisen jälkeen pääsivulle
         }
-
+        public ActionResult oops()
+        {
+           return View();   
+        }
     }
 
+
 }
+

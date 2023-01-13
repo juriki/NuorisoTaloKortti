@@ -53,7 +53,6 @@ namespace NuorisoTaloKortti.Controllers
                 NuorisokorttiEntities db = new NuorisokorttiEntities();
                 List<Nuoret> model = db.Nuoret.ToList();
 
-
                 foreach (var item in model)
                 {
                     if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
@@ -70,7 +69,6 @@ namespace NuorisoTaloKortti.Controllers
         }
 
 
-
         public ActionResult Edit(int? id)
         {
             List<Nuoret> model = db.Nuoret.ToList();
@@ -79,12 +77,18 @@ namespace NuorisoTaloKortti.Controllers
 
                 if (id == null)
                 {
-                    return HttpNotFound();
+                    return RedirectToAction("oops", "Home");
                 }
 
-                if (id == null ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null )
+                {
+                    return RedirectToAction("oops", "Home");
+                }
                 Nuoret nuoret = db.Nuoret.Find(id);
-                if(nuoret.Kayttajanimi != Session["Kayttajanimi"].ToString()) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if(nuoret.Kayttajanimi != Session["Kayttajanimi"].ToString())
+                {
+                    return RedirectToAction("oops", "Home");
+                }
                 if (nuoret != null) 
                 {
                     SelectList huoltaja = new SelectList(db.Huoltajat, "HuoltajaId","Huoltaja", nuoret.Huoltaja);
@@ -129,7 +133,10 @@ namespace NuorisoTaloKortti.Controllers
         {
             List<Nuoret> model = db.Nuoret.ToList();
             Nuoret nuoret = db.Nuoret.Find(id);
-            if(nuoret == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if(nuoret == null)
+            { 
+                return RedirectToAction("Loginikkuna", "Home");
+            }
             List<Kayttajat> model2 = db.Kayttajat.ToList();
             foreach (var mode in model2)
             {
@@ -140,7 +147,7 @@ namespace NuorisoTaloKortti.Controllers
                 }
                           
             }
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            return RedirectToAction("oops", "Home");
         }
 
         [HttpPost]

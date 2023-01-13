@@ -179,6 +179,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Kuvat\oops.png" />
     <Content Include="Kuvat\ukkkoKuva.jpg" />
     <Content Include="Kuvat\askolaLogo.png" />
     <Content Include="Kuvat\index[224].png" />
@@ -407,6 +408,7 @@
     <Content Include="Views\Nuoret\Create.cshtml" />
     <Content Include="Views\Nuoret\Edit.cshtml" />
     <Content Include="Views\Nuoret\Delete.cshtml" />
+    <Content Include="Views\Home\oops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
