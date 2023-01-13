@@ -153,21 +153,6 @@
     <Compile Include="Models\Nuoret.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Nuorisokortti.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Nuorisokortti.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Nuorisokortti.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Nuorisokortti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Nuorisokortti.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Postitoimipaikat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -208,16 +193,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Nuorisokortti.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
-      <LastGenOutput>Nuorisokortti.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Nuorisokortti.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
-      <LastGenOutput>Nuorisokortti.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -278,13 +253,6 @@
     <Content Include="wwwroot\js\bootstrap.esm.min.js" />
     <Content Include="wwwroot\js\bootstrap.js" />
     <Content Include="wwwroot\js\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Nuorisokortti.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Nuorisokortti.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Nuorisokortti.edmx.diagram">
-      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
