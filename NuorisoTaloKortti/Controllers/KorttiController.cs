@@ -165,7 +165,6 @@ namespace NuorisoTaloKortti.Controllers
             if (kayttajat.uusiSalasana != kayttajat.ToistaSalasana)
             {
                 kayttajat.LoginErrorMessage = "Salasanat eivät täsmä";
-                MessageBox.Show(kayttajat.uusiSalasana.ToString());
                 return View(kayttajat);
             }
             if (kayttajat.Salasana == null)
