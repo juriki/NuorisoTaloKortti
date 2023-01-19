@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows.Forms;
 
 namespace NuorisoTaloKortti.Controllers
 {
     public class NuoretController : Controller
     {
         // GET: Nuoret
-        NuorisokorttiEntities db = new NuorisokorttiEntities();
+        NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
         public ActionResult Index()
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
@@ -58,10 +59,25 @@ namespace NuorisoTaloKortti.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Etunimi, Sukunimi, SyntymaAika, Puhelinnumero, Osoite, Postinumero, Huoltaja, SPosti, Allergiat, Kuvauslupa, Aktivointi, Kuva, Kayttajanimi")] Nuoret nuori)
         {
+            var salasana = "38D0EC0B2A7AB61A8AA11FA145D68EDA";
+            var username = (nuori.Etunimi.ToString() + nuori.Sukunimi.ToString()).ToLower();
+
+            nuori.Kayttajanimi = username;
+
+            Kayttajat kayttajat = new Kayttajat();
+
+            kayttajat.Kayttajanimi = username;
+            kayttajat.Salasana = salasana;
+            kayttajat.uusiSalasana = salasana;
+            kayttajat.ToistaSalasana = salasana;
+
+    //        MessageBox.Show();
+
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 if (ModelState.IsValid)
                 {
+                    db.Kayttajat.Add(kayttajat);
                     db.Nuoret.Add(nuori);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -112,6 +128,7 @@ namespace NuorisoTaloKortti.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "NuoriId, Etunimi, Sukunimi, SyntymaAika, Puhelinnumero, Osoite, Postinumero, Huoltaja, SPosti, Allergiat, Kuvauslupa, Aktivointi, Kuva, Kayttajanimi")] Nuoret nuori)
         {
+ 
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
 

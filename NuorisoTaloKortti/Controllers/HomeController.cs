@@ -61,7 +61,7 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         public ActionResult Authorize(Kayttajat kayttajat)
         {
-            NuorisokorttiEntities db = new NuorisokorttiEntities();
+            NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
             PasswordHash password = new PasswordHash();
             string passwordHash = password.encodePassword(kayttajat.Salasana);
             //Haetaan käyttäjän/Loginin tiedot annetuilla tunnustiedoilla tietokannasta LINQ -kyselyllä
