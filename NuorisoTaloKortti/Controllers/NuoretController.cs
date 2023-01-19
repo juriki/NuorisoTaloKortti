@@ -79,7 +79,17 @@ namespace NuorisoTaloKortti.Controllers
                 {
                     db.Kayttajat.Add(kayttajat);
                     db.Nuoret.Add(nuori);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+
+                        kayttajat.LoginErrorMessage = "ERRor";
+                        MessageBox.Show(" BBBBBBUUUUUUMMMMM");
+                    }
+              
                     return RedirectToAction("Index");
                 }
                 return View(nuori);
