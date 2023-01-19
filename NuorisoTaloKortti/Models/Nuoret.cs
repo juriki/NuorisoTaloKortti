@@ -11,7 +11,8 @@ namespace NuorisoTaloKortti.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Nuoret
     {
         public int NuoriId { get; set; }
@@ -27,9 +28,14 @@ namespace NuorisoTaloKortti.Models
         public bool Kuvauslupa { get; set; }
         public bool Aktivointi { get; set; }
         public byte[] Kuva { get; set; }
+
+        [Required(ErrorMessage = "Käyttäjätunnus on jo olemmassa!")]
         public string Kayttajanimi { get; set; }
     
         public virtual Huoltajat Huoltajat { get; set; }
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }
+
+        public string LoginErrorMessage { get; internal set; }
+
     }
 }

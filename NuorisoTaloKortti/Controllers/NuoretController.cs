@@ -77,9 +77,18 @@ namespace NuorisoTaloKortti.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    
                     db.Kayttajat.Add(kayttajat);
                     db.Nuoret.Add(nuori);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        kayttajat.LoginErrorMessage = "Käyttäjänimi on jo olemassa!";
+                    }
+                
                     return RedirectToAction("Index");
                 }
                 return View(nuori);
