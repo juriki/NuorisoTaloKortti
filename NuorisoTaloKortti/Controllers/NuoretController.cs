@@ -58,10 +58,12 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Etunimi, Sukunimi, SyntymaAika, Puhelinnumero, Osoite, Postinumero, Huoltaja, SPosti, Allergiat, Kuvauslupa, Aktivointi, Kuva, Kayttajanimi")] Nuoret nuori)
+        
         {
+
+
             var salasana = "38D0EC0B2A7AB61A8AA11FA145D68EDA";
             var username = (nuori.Etunimi.ToString() + nuori.Sukunimi.ToString()).ToLower();
-
             nuori.Kayttajanimi = username;
 
             Kayttajat kayttajat = new Kayttajat();
@@ -71,15 +73,31 @@ namespace NuorisoTaloKortti.Controllers
             kayttajat.uusiSalasana = salasana;
             kayttajat.ToistaSalasana = salasana;
 
-    //        MessageBox.Show();
+            //        MessageBox.Show();
 
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 if (ModelState.IsValid)
                 {
-                    db.Kayttajat.Add(kayttajat);
-                    db.Nuoret.Add(nuori);
-                    db.SaveChanges();
+                    var usernamcount = 1;
+                    var lodstatus = false;
+                    while (!lodstatus)
+                    {
+                        db.Kayttajat.Add(kayttajat);
+                        db.Nuoret.Add(nuori);
+                        try
+                        {
+                            db.SaveChanges();
+                            lodstatus = true;
+                        }
+                        catch (Exception)
+                        {
+                            kayttajat.Kayttajanimi = username + usernamcount.ToString();
+                            nuori.Kayttajanimi = username + usernamcount.ToString();
+                            usernamcount++;
+                        }
+                    }
+
                     return RedirectToAction("Index");
                 }
                 return View(nuori);
@@ -89,6 +107,7 @@ namespace NuorisoTaloKortti.Controllers
             return RedirectToAction("Loginikkuna", "Home");
 
         }
+
 
         public ActionResult Edit(int? id)
         {
