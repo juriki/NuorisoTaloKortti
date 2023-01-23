@@ -11,7 +11,9 @@ namespace NuorisoTaloKortti.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+
     public partial class Huoltajat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +23,16 @@ namespace NuorisoTaloKortti.Models
         }
     
         public int HuoltajaId { get; set; }
+        [Required(ErrorMessage = "Kenttä Etunimi on pakollinen tieto!")]
         public string Etunimi { get; set; }
+        [Required(ErrorMessage = "Kenttä Sukunimi on pakollinen tieto!")]
         public string Sukunimi { get; set; }
+        [Required(ErrorMessage = "Kenttä Puhelinnumero on pakollinen tieto!")]
         public string Puhelinnumero { get; set; }
+        [Required(ErrorMessage = "Kenttä Osoite on pakollinen tieto!")]
         public string Osoite { get; set; }
+        [Required(ErrorMessage = "Kenttä Sukunimi on pakollinen tieto!")]
+
         public string Postinumero { get; set; }
     
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }

@@ -53,7 +53,21 @@ namespace NuorisoTaloKortti.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Etunimi, Sukunimi, Puhelinnumero, Osoite, Postinumero")] Huoltajat huoltaja)
         {
-            if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
+            if (!ModelState.IsValid) 
+            {
+                var post = db.Postitoimipaikat;
+                IEnumerable<SelectListItem> selectPostList = from p in post
+                                                             select new SelectListItem
+                                                             {
+                                                                 Value = p.Postinumero,
+                                                                 Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                             };
+
+                ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text");
+
+                return View();
+            }
+                if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 if (ModelState.IsValid)
                 {
@@ -144,10 +158,21 @@ namespace NuorisoTaloKortti.Controllers
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
-                Huoltajat huoltaja = db.Huoltajat.Find(id);
-                db.Huoltajat.Remove(huoltaja);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    Huoltajat huoltaja = db.Huoltajat.Find(id);
+                    db.Huoltajat.Remove(huoltaja);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    
+                    MessageBox.Show("Huoltajan poistaminen on kieltettyä! Ennen kuin kaikki huolessa olevat lapset ovat poistettuja järjestelmästä");
+                    return RedirectToAction("Index");
+
+                }
+
             }
             return RedirectToAction("Loginikkuna", "Home");
 

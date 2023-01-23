@@ -7,6 +7,17 @@
     <h2>Salasanan vaihtaminen</h2>
 
     <div class="form-horizontal">
+        <table class="table table-striped table-bordered">
+            <tr style="background-color: aqua">
+                <th>Nimi</th>
+                <th>@Html.DisplayNameFor(model => model.Kayttajanimi)</th>
+                <th>@Html.DisplayNameFor(model => model.Salasana)</th>
+                <th></th>
+            </tr>
+
+            }
+
+        </table>
 
         @using (Html.BeginForm())
         {

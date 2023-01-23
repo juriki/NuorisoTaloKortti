@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NuorisoTaloKortti.Models.Kayttajat>
+
+
+<div class="table-responsive text-nowrap">
+    <table class="table table-striped table-bordered table-fixed">
+        <tr style="background-color: aqua">
+            <th>
+                @Html.DisplayNameFor(model => model.Kayttajanimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salasana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yllapito)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.Yllapito == false)
+            {
+                continue;
+            }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kayttajanimi)
+                </td>
+                <td>
+                    **************
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yllapito)
+                </td>
+                <td>
+                    @Html.ActionLink("DeleteAdmin", "DeleteAdmin", new { id = item.KayttajaId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div>
+    @Html.ActionLink("Takaisin", "CreateAdmin")
+</div>
