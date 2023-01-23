@@ -105,7 +105,6 @@ namespace NuorisoTaloKortti.Controllers
 
         }
 
-
         public ActionResult Edit(int? id)
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
