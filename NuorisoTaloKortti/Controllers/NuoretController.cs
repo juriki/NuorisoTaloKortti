@@ -58,10 +58,7 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Etunimi, Sukunimi, SyntymaAika, Puhelinnumero, Osoite, Postinumero, Huoltaja, SPosti, Allergiat, Kuvauslupa, Aktivointi, Kuva, Kayttajanimi")] Nuoret nuori)
-        
         {
-
-
             var salasana = "38D0EC0B2A7AB61A8AA11FA145D68EDA";
             var username = (nuori.Etunimi.ToString() + nuori.Sukunimi.ToString()).ToLower();
             nuori.Kayttajanimi = username;
