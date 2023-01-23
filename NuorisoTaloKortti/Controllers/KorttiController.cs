@@ -15,14 +15,14 @@ namespace NuorisoTaloKortti.Controllers
 {
     public class KorttiController : Controller
     {
-        NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+        NuorisokorttiEntities2 db = new NuorisokorttiEntities2();
         // GET: Kortti
         public ActionResult Index()
         {
             // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-                NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+                NuorisokorttiEntities2 db = new NuorisokorttiEntities2();
 
                 List<Nuoret> model = db.Nuoret.ToList();
 
@@ -50,7 +50,7 @@ namespace NuorisoTaloKortti.Controllers
             // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-                NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+                NuorisokorttiEntities2 db = new NuorisokorttiEntities2();
                 List<Nuoret> model = db.Nuoret.ToList();
 
                 foreach (var item in model)

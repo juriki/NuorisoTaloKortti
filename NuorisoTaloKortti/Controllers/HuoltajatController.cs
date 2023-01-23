@@ -15,7 +15,7 @@ namespace NuorisoTaloKortti.Controllers
     public class HuoltajatController : Controller
     {
         // GET: Huoltajat
-        NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+        NuorisokorttiEntities2 db = new NuorisokorttiEntities2();
         public ActionResult Index()
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
