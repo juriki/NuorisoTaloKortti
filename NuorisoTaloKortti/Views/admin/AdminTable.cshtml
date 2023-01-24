@@ -1,6 +1,15 @@
 ﻿@model IEnumerable<NuorisoTaloKortti.Models.Kayttajat>
 
 
+<center>
+    <h2>Admin Table</h2>
+</center>
+
+
+<p>
+    @Html.ActionLink("Lisää ylläpitäjä", "CreateAdmin")
+</p>
+
 <div class="table-responsive text-nowrap">
     <table class="table table-striped table-bordered table-fixed">
         <tr style="background-color: aqua">
@@ -33,7 +42,7 @@
                     @Html.DisplayFor(modelItem => item.Yllapito)
                 </td>
                 <td>
-                    @Html.ActionLink("DeleteAdmin", "DeleteAdmin", new { id = item.KayttajaId })
+                    @Html.ActionLink("Poista", "Delete", new { id = item.KayttajaId })
                 </td>
             </tr>
         }
@@ -41,6 +50,3 @@
     </table>
 </div>
 
-<div>
-    @Html.ActionLink("Takaisin", "CreateAdmin")
-</div>
