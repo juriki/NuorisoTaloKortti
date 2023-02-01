@@ -110,7 +110,7 @@ namespace NuorisoTaloKortti.Controllers
                         try
                         {
                             db.SaveChanges();
-                            MessageBox.Show("Käyttäjän "+ nuori.Etunimi.ToString() + " " + nuori.Sukunimi.ToString() + " Käyttäjänimi kirjautumsita varten on :" + nuori.Kayttajanimi);
+                        //    MessageBox.Show("Käyttäjän "+ nuori.Etunimi.ToString() + " " + nuori.Sukunimi.ToString() + " Käyttäjänimi kirjautumsita varten on :" + nuori.Kayttajanimi);
                             lodstatus = true;
                         }
                         catch (Exception)

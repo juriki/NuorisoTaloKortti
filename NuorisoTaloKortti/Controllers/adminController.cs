@@ -96,7 +96,7 @@ namespace NuorisoTaloKortti.Controllers
                         }
                     }
                     var password = new PasswordHash();
-                    var hashpassword = password.encodePassword(kayttajat.Salasana.ToString());
+                    var hashpassword = password.EncodePassword(kayttajat.Salasana.ToString());
                     kayttajat.Salasana = hashpassword;
                     kayttajat.uusiSalasana = hashpassword;
                     kayttajat.ToistaSalasana = hashpassword;
@@ -116,13 +116,6 @@ namespace NuorisoTaloKortti.Controllers
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
-                var adminMina = db.Kayttajat;
-                var kayttajaMina = new Kayttajat();
-                foreach (var mina in adminMina)
-                {
-
-                }
-
                 if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 Kayttajat kayttaja = db.Kayttajat.Find(id);
                 if (kayttaja == null) return HttpNotFound();

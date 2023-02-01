@@ -77,17 +77,17 @@ namespace NuorisoTaloKortti.Controllers
 
                 if (id == null)
                 {
-                    return RedirectToAction("oops", "Home");
+                    return RedirectToAction("Oops", "Home");
                 }
 
                 if (id == null )
                 {
-                    return RedirectToAction("oops", "Home");
+                    return RedirectToAction("Oops", "Home");
                 }
                 Nuoret nuoret = db.Nuoret.Find(id);
                 if(nuoret.Kayttajanimi != Session["Kayttajanimi"].ToString())
                 {
-                    return RedirectToAction("oops", "Home");
+                    return RedirectToAction("Oops", "Home");
                 }
                 if (nuoret != null) 
                 {
@@ -147,7 +147,7 @@ namespace NuorisoTaloKortti.Controllers
                 }
                           
             }
-            return RedirectToAction("oops", "Home");
+            return RedirectToAction("Oops", "Home");
         }
 
         [HttpPost]
@@ -174,7 +174,7 @@ namespace NuorisoTaloKortti.Controllers
                 return View(kayttajat);
             }
             db.Entry(kayttajat).State = EntityState.Modified;
-            password = passw.encodePassword(kayttajat.ToistaSalasana);
+            password = passw.EncodePassword(kayttajat.ToistaSalasana);
             kayttajat.Salasana = password;
             db.SaveChanges();
             kayttajat.LoginErrorMessage = "Salasana Vaihdettu";
