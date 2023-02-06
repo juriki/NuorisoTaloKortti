@@ -13,10 +13,10 @@ namespace NuorisoTaloKortti.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class NuorisokorttiEntities1 : DbContext
+    public partial class nurisokorttiEntities1 : DbContext
     {
-        public NuorisokorttiEntities1()
-            : base("name=NuorisokorttiEntities1")
+        public nurisokorttiEntities1()
+            : base("name=nurisokorttiEntities1")
         {
         }
     

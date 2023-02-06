@@ -15,14 +15,14 @@ namespace NuorisoTaloKortti.Controllers
 {
     public class KorttiController : Controller
     {
-        NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+        nurisokorttiEntities1 db = new nurisokorttiEntities1();
         // GET: Kortti
         public ActionResult Index()
         {
             // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-                NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+                nurisokorttiEntities1 db = new nurisokorttiEntities1();
 
                 List<Nuoret> model = db.Nuoret.ToList();
 
@@ -50,7 +50,7 @@ namespace NuorisoTaloKortti.Controllers
             // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-                NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+                nurisokorttiEntities1 db = new nurisokorttiEntities1();
                 List<Nuoret> model = db.Nuoret.ToList();
 
                 foreach (var item in model)
@@ -77,17 +77,17 @@ namespace NuorisoTaloKortti.Controllers
 
                 if (id == null)
                 {
-                    return RedirectToAction("oops", "Home");
+                    return RedirectToAction("Oops", "Home");
                 }
 
                 if (id == null )
                 {
-                    return RedirectToAction("oops", "Home");
+                    return RedirectToAction("Oops", "Home");
                 }
                 Nuoret nuoret = db.Nuoret.Find(id);
                 if(nuoret.Kayttajanimi != Session["Kayttajanimi"].ToString())
                 {
-                    return RedirectToAction("oops", "Home");
+                    return RedirectToAction("Oops", "Home");
                 }
                 if (nuoret != null) 
                 {
@@ -147,7 +147,7 @@ namespace NuorisoTaloKortti.Controllers
                 }
                           
             }
-            return RedirectToAction("oops", "Home");
+            return RedirectToAction("Oops", "Home");
         }
 
         [HttpPost]
@@ -173,7 +173,7 @@ namespace NuorisoTaloKortti.Controllers
                 return View(kayttajat);
             }
             db.Entry(kayttajat).State = EntityState.Modified;
-            password = passw.encodePassword(kayttajat.ToistaSalasana);
+            password = passw.EncodePassword(kayttajat.ToistaSalasana);
             kayttajat.Salasana = password;
             db.SaveChanges();
             kayttajat.LoginErrorMessage = "Salasana Vaihdettu";

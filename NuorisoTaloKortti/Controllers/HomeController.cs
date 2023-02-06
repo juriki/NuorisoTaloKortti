@@ -61,9 +61,9 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         public ActionResult Authorize(Kayttajat kayttajat)
         {
-            NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+            nurisokorttiEntities1 db = new nurisokorttiEntities1();
             PasswordHash password = new PasswordHash();
-            string passwordHash = password.encodePassword(kayttajat.Salasana);
+            string passwordHash = password.EncodePassword(kayttajat.Salasana);
             //Haetaan käyttäjän/Loginin tiedot annetuilla tunnustiedoilla tietokannasta LINQ -kyselyllä
             var LoggedUser = db.Kayttajat.SingleOrDefault(x => x.Kayttajanimi == kayttajat.Kayttajanimi && x.Salasana == passwordHash);
             if (LoggedUser != null)
@@ -103,7 +103,7 @@ namespace NuorisoTaloKortti.Controllers
             ViewBag.LoggedStatus = "Out";
             return RedirectToAction("Index", "Home"); //Uloskirjautumisen jälkeen pääsivulle
         }
-        public ActionResult oops()
+        public ActionResult Oops()
         {
            return View();   
         }
