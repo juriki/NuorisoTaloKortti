@@ -13,7 +13,7 @@ namespace NuorisoTaloKortti.Controllers
     public class NuoretController : Controller
     {
         // GET: Nuoret
-        NuorisokorttiEntities2 db = new NuorisokorttiEntities2();
+        nurisokorttiEntities1 db = new nurisokorttiEntities1();
         public ActionResult Index()
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")

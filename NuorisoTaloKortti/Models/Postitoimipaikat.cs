@@ -14,19 +14,7 @@ namespace NuorisoTaloKortti.Models
     
     public partial class Postitoimipaikat
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Postitoimipaikat()
-        {
-            this.Huoltajat = new HashSet<Huoltajat>();
-            this.Nuoret = new HashSet<Nuoret>();
-        }
-    
         public string Postinumero { get; set; }
         public string Postitoimipaikka { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Huoltajat> Huoltajat { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nuoret> Nuoret { get; set; }
     }
 }

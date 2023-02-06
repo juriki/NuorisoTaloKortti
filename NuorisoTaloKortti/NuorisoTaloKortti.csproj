@@ -131,31 +131,31 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Huoltajat.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>nuori.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kayttajat.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>nuori.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Nuoret.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>nuori.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nuori.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>nuori.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nuori.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>nuori.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nuori.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>nuori.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Postitoimipaikat.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>nuori.tt</DependentUpon>
     </Compile>
     <Compile Include="PasswordHashMd5.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,15 +185,15 @@
     <Content Include="Kuvat\askolaLogo.png" />
     <Content Include="Kuvat\index[224].png" />
     <Content Include="Kuvat\Varo iloista Askolaa.png" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\nuori.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>nuori.edmx</DependentUpon>
+      <LastGenOutput>nuori.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\nuori.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>nuori.edmx</DependentUpon>
+      <LastGenOutput>nuori.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -254,12 +254,12 @@
     <Content Include="wwwroot\js\bootstrap.esm.min.js" />
     <Content Include="wwwroot\js\bootstrap.js" />
     <Content Include="wwwroot\js\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\nuori.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>nuori.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\nuori.edmx.diagram">
+      <DependentUpon>nuori.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
