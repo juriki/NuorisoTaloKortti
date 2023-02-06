@@ -103,18 +103,23 @@ namespace NuorisoTaloKortti.Controllers
                 {
                     var usernamcount = 1;
                     var lodstatus = false;
+
                     while (!lodstatus)
+
                     {
                         db.Kayttajat.Add(kayttajat);
                         db.Nuoret.Add(nuori);
                         try
                         {
                             db.SaveChanges();
+
                         //    MessageBox.Show("Käyttäjän "+ nuori.Etunimi.ToString() + " " + nuori.Sukunimi.ToString() + " Käyttäjänimi kirjautumsita varten on :" + nuori.Kayttajanimi);
+
                             lodstatus = true;
                         }
                         catch (Exception)
                         {
+
                             var post = db.Postitoimipaikat;
                             IEnumerable<SelectListItem> selectPostList = from p in post
                                                                          select new SelectListItem
@@ -134,6 +139,7 @@ namespace NuorisoTaloKortti.Controllers
                                                                              };
 
                             ViewBag.Huoltaja = new SelectList(selectHuoltajaList, "Value", "Text");
+
                             kayttajat.Kayttajanimi = username + usernamcount.ToString();
                             nuori.Kayttajanimi = username + usernamcount.ToString();
                             usernamcount++;
@@ -257,6 +263,18 @@ namespace NuorisoTaloKortti.Controllers
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 Nuoret nuori = db.Nuoret.Find(id);
+                var nuorennimi = nuori.Kayttajanimi.ToString();
+                var poistettavanuori = 0;
+                List<Kayttajat> model = db.Kayttajat.ToList();
+                foreach (var item in model)
+                {
+                    if (item.Kayttajanimi.ToString() == nuorennimi)
+                    {
+                        poistettavanuori = item.KayttajaId;
+                    }
+                }
+                Kayttajat kayttajat = db.Kayttajat.Find(poistettavanuori);
+                db.Kayttajat.Remove(kayttajat);
                 db.Nuoret.Remove(nuori);
                 db.SaveChanges();
                 return RedirectToAction("Index");
