@@ -11,9 +11,9 @@ namespace NuorisoTaloKortti
     {
         private string Password { get; set; }
         private string _salt = "87g4bdwe6gtfywo8e";
-        private string _passwordHash { get; set; }
+       // private string _passwordHash { get; set; }
 
-        public string encodePassword(string password)
+        public string EncodePassword(string password)
         {
             var suola = Encoding.UTF8.GetBytes(this._salt);
             var value = System.Text.Encoding.UTF8.GetBytes(password);
@@ -23,7 +23,7 @@ namespace NuorisoTaloKortti
             this.Password = hex.Replace("-", "");
             return hex.Replace("-", "");
         }
-        public bool passwordChek(string passwordHas, string password)
+        public bool PasswordChek(string passwordHas, string password)
         {
             var suola = Encoding.UTF8.GetBytes(this._salt);
             var value = System.Text.Encoding.UTF8.GetBytes(password);
@@ -37,7 +37,6 @@ namespace NuorisoTaloKortti
             }
             return false;
         }
-
 
     }
 }

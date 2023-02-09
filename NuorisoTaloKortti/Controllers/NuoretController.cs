@@ -13,7 +13,7 @@ namespace NuorisoTaloKortti.Controllers
     public class NuoretController : Controller
     {
         // GET: Nuoret
-        NuorisokorttiEntities1 db = new NuorisokorttiEntities1();
+        nurisokorttiEntities1 db = new nurisokorttiEntities1();
         public ActionResult Index()
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
@@ -59,9 +59,33 @@ namespace NuorisoTaloKortti.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Etunimi, Sukunimi, SyntymaAika, Puhelinnumero, Osoite, Postinumero, Huoltaja, SPosti, Allergiat, Kuvauslupa, Aktivointi, Kuva, Kayttajanimi")] Nuoret nuori)
         {
+            if (!ModelState.IsValid)
+            {
+                var post = db.Postitoimipaikat;
+                IEnumerable<SelectListItem> selectPostList = from p in post
+                                                             select new SelectListItem
+                                                             {
+                                                                 Value = p.Postinumero,
+                                                                 Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                             };
+
+                ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text");
+
+                var huoltajat = db.Huoltajat;
+                IEnumerable<SelectListItem> selectHuoltajaList = from h in huoltajat
+                                                                 select new SelectListItem
+                                                                 {
+                                                                     Value = h.HuoltajaId.ToString(),
+                                                                     Text = "(ID: " + h.HuoltajaId.ToString() + ") " + h.Etunimi + " " + h.Sukunimi
+                                                                 };
+
+                ViewBag.Huoltaja = new SelectList(selectHuoltajaList, "Value", "Text");
+
+                return View();
+            }
+        
             var salasana = "38D0EC0B2A7AB61A8AA11FA145D68EDA";
             var username = (nuori.Etunimi.ToString() + nuori.Sukunimi.ToString()).ToLower();
-
             nuori.Kayttajanimi = username;
 
             Kayttajat kayttajat = new Kayttajat();
@@ -71,25 +95,57 @@ namespace NuorisoTaloKortti.Controllers
             kayttajat.uusiSalasana = salasana;
             kayttajat.ToistaSalasana = salasana;
 
-    //        MessageBox.Show();
+            //        MessageBox.Show();
 
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 if (ModelState.IsValid)
                 {
-                    db.Kayttajat.Add(kayttajat);
-                    db.Nuoret.Add(nuori);
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (Exception)
-                    {
+                    var usernamcount = 1;
+                    var lodstatus = false;
 
-                        kayttajat.LoginErrorMessage = "ERRor";
-                        MessageBox.Show(" BBBBBBUUUUUUMMMMM");
+                    while (!lodstatus)
+
+                    {
+                        db.Kayttajat.Add(kayttajat);
+                        db.Nuoret.Add(nuori);
+                        try
+                        {
+                            db.SaveChanges();
+
+                        //    MessageBox.Show("Käyttäjän "+ nuori.Etunimi.ToString() + " " + nuori.Sukunimi.ToString() + " Käyttäjänimi kirjautumsita varten on :" + nuori.Kayttajanimi);
+
+                            lodstatus = true;
+                        }
+                        catch (Exception)
+                        {
+
+                            var post = db.Postitoimipaikat;
+                            IEnumerable<SelectListItem> selectPostList = from p in post
+                                                                         select new SelectListItem
+                                                                         {
+                                                                             Value = p.Postinumero,
+                                                                             Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                                         };
+
+                            ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text");
+
+                            var huoltajat = db.Huoltajat;
+                            IEnumerable<SelectListItem> selectHuoltajaList = from h in huoltajat
+                                                                             select new SelectListItem
+                                                                             {
+                                                                                 Value = h.HuoltajaId.ToString(),
+                                                                                 Text = "(ID: " + h.HuoltajaId.ToString() + ") " + h.Etunimi + " " + h.Sukunimi
+                                                                             };
+
+                            ViewBag.Huoltaja = new SelectList(selectHuoltajaList, "Value", "Text");
+
+                            kayttajat.Kayttajanimi = username + usernamcount.ToString();
+                            nuori.Kayttajanimi = username + usernamcount.ToString();
+                            usernamcount++;
+                        }
                     }
-              
+
                     return RedirectToAction("Index");
                 }
                 return View(nuori);
@@ -144,30 +200,40 @@ namespace NuorisoTaloKortti.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    db.Entry(nuori).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    try
+                    {
+                        db.Entry(nuori).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception)
+                    {
+                        var post = db.Postitoimipaikat;
+                        IEnumerable<SelectListItem> selectPostList = from p in post
+                                                                     select new SelectListItem
+                                                                     {
+                                                                         Value = p.Postinumero,
+                                                                         Text = p.Postinumero + " " + p.Postitoimipaikka
+                                                                     };
+
+                        ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", nuori.Postinumero);
+
+                        var huoltajat = db.Huoltajat;
+                        IEnumerable<SelectListItem> selectHuoltajaList = from h in huoltajat
+                                                                         select new SelectListItem
+                                                                         {
+                                                                             Value = h.HuoltajaId.ToString(),
+                                                                             Text = h.Etunimi + " " + h.Sukunimi
+                                                                         };
+
+                        ViewBag.Huoltaja = new SelectList(selectHuoltajaList, "Value", "Text", nuori.Huoltaja);
+
+                        MessageBox.Show("Muista Käyttäjänimi! Tai käyttäjänimi on jo olemassa!");
+                        return View(nuori);
+                    }
+
                 }
 
-                var post = db.Postitoimipaikat;
-                IEnumerable<SelectListItem> selectPostList = from p in post
-                                                             select new SelectListItem
-                                                             {
-                                                                 Value = p.Postinumero,
-                                                                 Text = p.Postinumero + " " + p.Postitoimipaikka
-                                                             };
-
-                ViewBag.Postinumero = new SelectList(selectPostList, "Value", "Text", nuori.Postinumero);
-
-                var huoltajat = db.Huoltajat;
-                IEnumerable<SelectListItem> selectHuoltajaList = from h in huoltajat
-                                                                 select new SelectListItem
-                                                                 {
-                                                                     Value = h.HuoltajaId.ToString(),
-                                                                     Text = h.Etunimi + " " + h.Sukunimi
-                                                                 };
-
-                ViewBag.Huoltaja = new SelectList(selectHuoltajaList, "Value", "Text", nuori.Huoltaja);
 
                 return View(nuori);
             }
@@ -175,6 +241,7 @@ namespace NuorisoTaloKortti.Controllers
             return RedirectToAction("Loginikkuna", "Home");
 
         }
+
 
         public ActionResult Delete(int? id)
         {
@@ -196,6 +263,18 @@ namespace NuorisoTaloKortti.Controllers
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
             {
                 Nuoret nuori = db.Nuoret.Find(id);
+                var nuorennimi = nuori.Kayttajanimi.ToString();
+                var poistettavanuori = 0;
+                List<Kayttajat> model = db.Kayttajat.ToList();
+                foreach (var item in model)
+                {
+                    if (item.Kayttajanimi.ToString() == nuorennimi)
+                    {
+                        poistettavanuori = item.KayttajaId;
+                    }
+                }
+                Kayttajat kayttajat = db.Kayttajat.Find(poistettavanuori);
+                db.Kayttajat.Remove(kayttajat);
                 db.Nuoret.Remove(nuori);
                 db.SaveChanges();
                 return RedirectToAction("Index");

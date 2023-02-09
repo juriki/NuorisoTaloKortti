@@ -73,11 +73,15 @@
                     <div style="background-color: #B71234; opacity: .7; padding: 1px;" class="card-footer text-muted">
                         <p style="color: black; opacity: 1"> Tänään on : @DateTime.Now.Date.ToString("dd/MM/yyyy")</p>
                     </div>
-                </div>
+                </div>              
+                }
+                    else 
+             {
+                 <h1 style="background-color: red">Kortti ei ole aktivoitu vielä</h1>
             }
             @if (item.Aktivointi.ToString() == "True")
             {
-                @Html.ActionLink("Lisäkuva Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
+                @Html.ActionLink("Vaihda Kuva", "Edit", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
             }
         </center>
 
