@@ -130,37 +130,37 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Model\database_firewall_rules.cs">
+    <Compile Include="Models\database_firewall_rules.cs">
       <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Huoltajat.cs">
+    <Compile Include="Models\Huoltajat.cs">
       <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Kayttajat.cs">
+    <Compile Include="Models\Kayttajat.cs">
       <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Nuoret.cs">
+    <Compile Include="Models\Nuoret.cs">
       <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Nuorisokortti.Context.cs">
+    <Compile Include="Models\Nuorisokortti.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Nuorisokortti.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Nuorisokortti.cs">
+    <Compile Include="Models\Nuorisokortti.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Nuorisokortti.Designer.cs">
+    <Compile Include="Models\Nuorisokortti.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Nuorisokortti.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Postitoimipaikat.cs">
+    <Compile Include="Models\Postitoimipaikat.cs">
       <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\sysdiagrams.cs">
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
     <Compile Include="PasswordHashMd5.cs" />
@@ -191,12 +191,12 @@
     <Content Include="Kuvat\askolaLogo.png" />
     <Content Include="Kuvat\index[224].png" />
     <Content Include="Kuvat\Varo iloista Askolaa.png" />
-    <Content Include="Model\Nuorisokortti.Context.tt">
+    <Content Include="Models\Nuorisokortti.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Nuorisokortti.edmx</DependentUpon>
       <LastGenOutput>Nuorisokortti.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\Nuorisokortti.tt">
+    <Content Include="Models\Nuorisokortti.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Nuorisokortti.edmx</DependentUpon>
       <LastGenOutput>Nuorisokortti.cs</LastGenOutput>
@@ -260,11 +260,11 @@
     <Content Include="wwwroot\js\bootstrap.esm.min.js" />
     <Content Include="wwwroot\js\bootstrap.js" />
     <Content Include="wwwroot\js\bootstrap.min.js" />
-    <EntityDeploy Include="Model\Nuorisokortti.edmx">
+    <EntityDeploy Include="Models\Nuorisokortti.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Nuorisokortti.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Model\Nuorisokortti.edmx.diagram">
+    <Content Include="Models\Nuorisokortti.edmx.diagram">
       <DependentUpon>Nuorisokortti.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />

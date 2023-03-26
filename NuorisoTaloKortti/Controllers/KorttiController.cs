@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
-using NuorisoTaloKortti.Model;
+using NuorisoTaloKortti.Models;
 // List Generator
 
 namespace NuorisoTaloKortti.Controllers

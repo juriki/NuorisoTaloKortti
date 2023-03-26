@@ -1,4 +1,4 @@
-﻿using NuorisoTaloKortti.Model;
+﻿using NuorisoTaloKortti.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

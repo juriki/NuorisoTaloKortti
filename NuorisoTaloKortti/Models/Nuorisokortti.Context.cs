@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NuorisoTaloKortti.Model
+namespace NuorisoTaloKortti.Models
 {
     using System;
     using System.Data.Entity;
