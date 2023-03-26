@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NuorisoTaloKortti.Model;
 
 namespace NuorisoTaloKortti.Controllers
 {
@@ -61,7 +62,7 @@ namespace NuorisoTaloKortti.Controllers
         [HttpPost]
         public ActionResult Authorize(Kayttajat kayttajat)
         {
-            nurisokorttiEntities1 db = new nurisokorttiEntities1();
+            nurisokorttiEntities3 db = new nurisokorttiEntities3();
             PasswordHash password = new PasswordHash();
             string passwordHash = password.EncodePassword(kayttajat.Salasana);
             //Haetaan käyttäjän/Loginin tiedot annetuilla tunnustiedoilla tietokannasta LINQ -kyselyllä

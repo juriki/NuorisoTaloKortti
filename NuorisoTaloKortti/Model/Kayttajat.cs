@@ -7,14 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NuorisoTaloKortti.Models
+namespace NuorisoTaloKortti.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Postitoimipaikat
+    public partial class Kayttajat
     {
-        public string Postinumero { get; set; }
-        public string Postitoimipaikka { get; set; }
+        public int KayttajaId { get; set; }
+        public string Kayttajanimi { get; set; }
+        public string Salasana { get; set; }
+        public bool Yllapito { get; set; }
     }
 }

@@ -9,20 +9,21 @@ using System.Windows.Forms;
 using NuorisoTaloKortti.Models;
 using System.Net;
 using System.IO;
+using NuorisoTaloKortti.Model;
 // List Generator
 
 namespace NuorisoTaloKortti.Controllers
 {
     public class KorttiController : Controller
     {
-        nurisokorttiEntities1 db = new nurisokorttiEntities1();
+        nurisokorttiEntities3 db = new nurisokorttiEntities3();
         // GET: Kortti
         public ActionResult Index()
         {
             // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-                nurisokorttiEntities1 db = new nurisokorttiEntities1();
+                nurisokorttiEntities3 db = new nurisokorttiEntities3();
 
                 List<Nuoret> model = db.Nuoret.ToList();
 
@@ -50,7 +51,7 @@ namespace NuorisoTaloKortti.Controllers
             // Tarkistetan Onko joku kirjautunut.  Session["Yllapito"].ToString() Tarkista onko oikeuskia  muokka tietoja.
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
-                nurisokorttiEntities1 db = new nurisokorttiEntities1();
+                nurisokorttiEntities3 db = new nurisokorttiEntities3();
                 List<Nuoret> model = db.Nuoret.ToList();
 
                 foreach (var item in model)

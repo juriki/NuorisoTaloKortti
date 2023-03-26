@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NuorisoTaloKortti.Models
+namespace NuorisoTaloKortti.Model
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class nurisokorttiEntities1 : DbContext
+    public partial class nurisokorttiEntities3 : DbContext
     {
-        public nurisokorttiEntities1()
-            : base("name=nurisokorttiEntities1")
+        public nurisokorttiEntities3()
+            : base("name=nurisokorttiEntities3")
         {
         }
     
@@ -29,5 +29,7 @@ namespace NuorisoTaloKortti.Models
         public virtual DbSet<Kayttajat> Kayttajat { get; set; }
         public virtual DbSet<Nuoret> Nuoret { get; set; }
         public virtual DbSet<Postitoimipaikat> Postitoimipaikat { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

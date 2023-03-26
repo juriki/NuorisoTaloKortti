@@ -1,4 +1,5 @@
-﻿using NuorisoTaloKortti.Models;
+﻿using NuorisoTaloKortti.Model;
+using NuorisoTaloKortti.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,7 +16,7 @@ namespace NuorisoTaloKortti.Controllers
     public class HuoltajatController : Controller
     {
         // GET: Huoltajat
-        nurisokorttiEntities1 db = new nurisokorttiEntities1();
+        nurisokorttiEntities3 db = new nurisokorttiEntities3();
         public ActionResult Index()
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
