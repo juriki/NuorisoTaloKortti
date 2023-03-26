@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Windows;
 using System.Windows.Forms;
-using NuorisoTaloKortti.Models;
 using System.Net;
 using System.IO;
 using NuorisoTaloKortti.Model;
