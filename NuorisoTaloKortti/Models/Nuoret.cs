@@ -13,6 +13,7 @@ namespace NuorisoTaloKortti.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+
     public partial class Nuoret
     {
         public int NuoriId { get; set; }
@@ -39,5 +40,6 @@ namespace NuorisoTaloKortti.Models
 
         public virtual Huoltajat Huoltajat { get; set; }
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }
+
     }
 }

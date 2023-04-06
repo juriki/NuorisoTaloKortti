@@ -13,12 +13,13 @@ namespace NuorisoTaloKortti.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+
     public partial class Huoltajat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Huoltajat()
         {
-            this.Nuoret = new HashSet<Nuoret>();
+            this.Nuorets = new HashSet<Nuoret>();
         }
 
         public int HuoltajaId { get; set; }
@@ -35,7 +36,7 @@ namespace NuorisoTaloKortti.Models
         public string Postinumero { get; set; }
 
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }
-      //  [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nuoret> Nuoret { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Nuoret> Nuorets { get; set; }
     }
 }

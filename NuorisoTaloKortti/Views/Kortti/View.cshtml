@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<NuorisoTaloKortti.Models.Nuoret>
+
 @{
     ViewBag.Title = "View";
 }
@@ -26,7 +27,7 @@
                     kuvalupa = "Saa otta kuva";
 
                 }
-                elses
+                else
                 {
                     kuvalupa = "ei saa otaa kuva";
                 }
@@ -45,7 +46,7 @@
                     <div class="col-lg">
                         <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded; card mb-1" style=" text-align: center; padding: 1px; max-width: 25rem;">
                             <div>
-                                <h3 class="card-header" style="margin-top: 1px; background-color:#B71234">Huoltaja id:  @item.Huoltajat.HuoltajaId</h3>
+                                <h3 class="card-header" style="margin-top: 1px; background-color:#B71234">Huoltaja id:  @item.Huoltajat.Etunimi</h3>
                                 <div style="background-color: #ffed00;" class="card-body; padding: 15px;">
                                     <h5 class="card-title">Nimi : @item.Huoltajat.Etunimi @item.Huoltajat.Sukunimi</h5>
 

@@ -13,6 +13,8 @@ namespace NuorisoTaloKortti.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+
+
     public partial class Kayttajat
     {
         public int KayttajaId { get; set; }
