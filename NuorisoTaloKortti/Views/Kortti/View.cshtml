@@ -54,7 +54,7 @@
                                         <li class="list-group-item"><h5>Puhelinnumero : @item.Huoltajat.Puhelinnumero</h5></li>
                                     </ul>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><h6>Osoite : @item.Osoite <br /> @item.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6></li>
+                                        <li class="list-group-item"><h6>Osoite : @item.Osoite <br /></h6></li>
                                     </ul>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item"><h6>Nuoresta @kuvalupa</h6></li>
                                     </ul>
-                                    <p class="list-group-item"><h6>Osoite : @item.Huoltajat.Osoite <br /> @item.Huoltajat.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6></p>
+                                    <p class="list-group-item"><h6>Osoite : @item.Huoltajat.Osoite <br />  </h6></p>
                                     @Html.ActionLink("Vaihda Salasana", "PsswordChange", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
 
                                 </div>

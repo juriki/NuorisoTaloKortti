@@ -79,6 +79,18 @@ warning 6002: The table/view 'nurisokortti.sys.database_firewall_rules' does not
           <Property Name="create_date" Type="datetime" Nullable="false" />
           <Property Name="modify_date" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Huoltajat__Posti__7C4F7684">
+          <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="1" />
+          <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postitoimipaikat">
+              <PropertyRef Name="Postinumero" />
+            </Principal>
+            <Dependent Role="Huoltajat">
+              <PropertyRef Name="Postinumero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Nuoret_Huoltajat">
           <End Role="Huoltajat" Type="Self.Huoltajat" Multiplicity="1" />
           <End Role="Nuoret" Type="Self.Nuoret" Multiplicity="*" />
@@ -138,6 +150,10 @@ warning 6002: The table/view 'nurisokortti.sys.database_firewall_rules' does not
     [database_firewall_rules].[modify_date] AS [modify_date]
     FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK__Huoltajat__Posti__7C4F7684" Association="Self.FK__Huoltajat__Posti__7C4F7684">
+            <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
+            <End Role="Huoltajat" EntitySet="Huoltajat" />
+          </AssociationSet>
           <AssociationSet Name="FK_Nuoret_Huoltajat" Association="Self.FK_Nuoret_Huoltajat">
             <End Role="Huoltajat" EntitySet="Huoltajat" />
             <End Role="Nuoret" EntitySet="Nuoret" />
@@ -158,6 +174,7 @@ warning 6002: The table/view 'nurisokortti.sys.database_firewall_rules' does not
           <Property Name="Osoite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Nuoret" Relationship="nurisokorttiModel.FK_Nuoret_Huoltajat" FromRole="Huoltajat" ToRole="Nuoret" />
+          <NavigationProperty Name="Postitoimipaikat" Relationship="nurisokorttiModel.FK__Huoltajat__Posti__7C4F7684" FromRole="Huoltajat" ToRole="Postitoimipaikat" />
         </EntityType>
         <EntityType Name="Kayttajat">
           <Key>
@@ -194,6 +211,7 @@ warning 6002: The table/view 'nurisokortti.sys.database_firewall_rules' does not
           </Key>
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Postitoimipaikka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Huoltajat" Relationship="nurisokorttiModel.FK__Huoltajat__Posti__7C4F7684" FromRole="Postitoimipaikat" ToRole="Huoltajat" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -262,6 +280,10 @@ warning 6002: The table/view 'nurisokortti.sys.database_firewall_rules' does not
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK__Huoltajat__Posti__7C4F7684" Association="nurisokorttiModel.FK__Huoltajat__Posti__7C4F7684">
+            <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
+            <End Role="Huoltajat" EntitySet="Huoltajat" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Nuoret_Huoltajat">
           <End Type="nurisokorttiModel.Huoltajat" Role="Huoltajat" Multiplicity="1" />
@@ -286,6 +308,18 @@ warning 6002: The table/view 'nurisokortti.sys.database_firewall_rules' does not
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK__Huoltajat__Posti__7C4F7684">
+          <End Type="nurisokorttiModel.Postitoimipaikat" Role="Postitoimipaikat" Multiplicity="1" />
+          <End Type="nurisokorttiModel.Huoltajat" Role="Huoltajat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postitoimipaikat">
+              <PropertyRef Name="Postinumero" />
+            </Principal>
+            <Dependent Role="Huoltajat">
+              <PropertyRef Name="Postinumero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
