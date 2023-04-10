@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<NuorisoTaloKortti.Models.Nuoret>
-
 @{
     ViewBag.Title = "View";
 }
@@ -46,7 +45,7 @@
                     <div class="col-lg">
                         <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded; card mb-1" style=" text-align: center; padding: 1px; max-width: 25rem;">
                             <div>
-                                <h3 class="card-header" style="margin-top: 1px; background-color:#B71234">Huoltaja id:  @item.Huoltajat.Etunimi</h3>
+                                <h3 class="card-header" style="margin-top: 1px; background-color:#B71234">Huoltaja id:  @item.Huoltajat.HuoltajaId</h3>
                                 <div style="background-color: #ffed00;" class="card-body; padding: 15px;">
                                     <h5 class="card-title">Nimi : @item.Huoltajat.Etunimi @item.Huoltajat.Sukunimi</h5>
 
@@ -54,7 +53,7 @@
                                         <li class="list-group-item"><h5>Puhelinnumero : @item.Huoltajat.Puhelinnumero</h5></li>
                                     </ul>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><h6>Osoite : @item.Osoite <br /> @item.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6></li>
+                                        <li class="list-group-item"><h6>Osoite : @item.Osoite <br /></h6></li>
                                     </ul>
                                 </div>
                             </div>
@@ -84,7 +83,7 @@
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item"><h6>Nuoresta @kuvalupa</h6></li>
                                     </ul>
-                                    <p class="list-group-item"><h6>Osoite : @item.Huoltajat.Osoite <br /> @item.Huoltajat.Postinumero @item.Postitoimipaikat.Postitoimipaikka </h6></p>
+                                    <p class="list-group-item"><h6>Osoite : @item.Huoltajat.Osoite <br />  </h6></p>
                                     @Html.ActionLink("Vaihda Salasana", "PsswordChange", new { id = item.NuoriId, @class = "btn btn-primary", @role = "button" })
 
                                 </div>
