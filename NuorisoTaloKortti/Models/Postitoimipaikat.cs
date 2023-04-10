@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using NuorisoTaloKortti.Models;
+using System.Collections.Generic;
+
 namespace NuorisoTaloKortti.Models
 {
     using System;
@@ -18,7 +21,7 @@ namespace NuorisoTaloKortti.Models
         public Postitoimipaikat()
         {
             this.Huoltajat = new HashSet<Huoltajat>();
-            this.Nuoret = new HashSet<Nuoret>();
+            this.Nuoret = new HashSet<Huoltajat>();
         }
 
         public string Postinumero { get; set; }
@@ -27,6 +30,6 @@ namespace NuorisoTaloKortti.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Huoltajat> Huoltajat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nuoret> Nuoret { get; set; }
+        public virtual ICollection<Huoltajat> Nuoret { get; set; }
     }
 }

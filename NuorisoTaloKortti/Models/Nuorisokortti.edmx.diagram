@@ -5,12 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="767f1ae2f54b43f4ad5f791b6103717c" Name="Diagram1">
-        <EntityTypeShape EntityType="nurisokorttiModel.Huoltajat" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nurisokorttiModel.Kayttajat" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nurisokorttiModel.Nuoret" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nurisokorttiModel.Postitoimipaikat" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nurisokorttiModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nurisokorttiModel.database_firewall_rules" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nurisokorttiModel.Huoltajat" Width="1.5" PointX="0.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nurisokorttiModel.Kayttajat" Width="1.5" PointX="3.875" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="nurisokorttiModel.Nuoret" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="nurisokorttiModel.Postitoimipaikat" Width="1.5" PointX="3.625" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nurisokorttiModel.sysdiagrams" Width="1.5" PointX="12.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="nurisokorttiModel.database_firewall_rules" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="nurisokorttiModel.FK_Nuoret_Huoltajat" />
+        <AssociationConnector Association="nurisokorttiModel.FK__Huoltajat__Posti__7C4F7684" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

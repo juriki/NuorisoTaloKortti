@@ -7,15 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace NuorisoTaloKortti.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
+    using NuorisoTaloKortti.Models;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Nuoret
     {
+
         public int NuoriId { get; set; }
 
         [Required(ErrorMessage = "Kenttä Etunimi on pakollinen tieto!")]
@@ -40,6 +43,8 @@ namespace NuorisoTaloKortti.Models
 
         public virtual Huoltajat Huoltajat { get; set; }
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }
-
     }
 }
+
+
+

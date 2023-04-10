@@ -7,14 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace NuorisoTaloKortti.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-
-
+    
     public partial class Kayttajat
     {
         public int KayttajaId { get; set; }
@@ -36,3 +35,7 @@ namespace NuorisoTaloKortti.Models
         public string LoginErrorMessage { get; internal set; }
     }
 }
+
+
+
+

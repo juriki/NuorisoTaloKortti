@@ -51,22 +51,25 @@ namespace NuorisoTaloKortti.Controllers
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
             {
                 nurisokorttiEntities3 db = new nurisokorttiEntities3();
-             //   List<Nuoret> model = db.Nuoret.ToList();
+                List<Nuoret> model = db.Nuoret.ToList();
 
-                var kaikii = db.Nuoret.Include(x => x.Huoltajat).Include(x => x.Postitoimipaikat);
-
-
-                        var newlist = kaikii.Where(x => x.Kayttajanimi.Contains(Session["Kayttajanimi"].ToString()) && x.Huoltajat.HuoltajaId == x.Huoltaja);
+                foreach (var item in model)
+                {
+                    if (item.Kayttajanimi.ToString() == Session["Kayttajanimi"].ToString())
+                    {
+                        var newlist = model.Where(x => x.Kayttajanimi.Contains(Session["Kayttajanimi"].ToString()));
                         return View(newlist);
-             
+                    }
+                }
+                return RedirectToAction("Loginikkuna", "Home");
             }
 
             return RedirectToAction("Loginikkuna", "Home");
 
-        }
+           }
 
 
-        public ActionResult Edit(int? id)
+            public ActionResult Edit(int? id)
         {
             List<Nuoret> model = db.Nuoret.ToList();
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "False")
