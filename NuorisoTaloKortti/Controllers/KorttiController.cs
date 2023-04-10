@@ -56,7 +56,7 @@ namespace NuorisoTaloKortti.Controllers
                 var kaikii = db.Nuoret.Include(x => x.Huoltajat).Include(x => x.Postitoimipaikat);
 
 
-                        var newlist = kaikii.Where(x => x.Kayttajanimi.Contains(Session["Kayttajanimi"].ToString()) && x.Huoltajat.HuoltajaId == x.Huoltaja);
+                        var newlist = kaikii.Where(x => x.Kayttajanimi.Contains(Session["Kayttajanimi"].ToString()));
                         return View(newlist);
              
             }
