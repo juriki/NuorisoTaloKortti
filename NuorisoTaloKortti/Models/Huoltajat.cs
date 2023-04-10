@@ -7,6 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using NuorisoTaloKortti.Models;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace NuorisoTaloKortti.Models
 {
     using System;
@@ -19,14 +23,21 @@ namespace NuorisoTaloKortti.Models
         {
             this.Nuoret = new HashSet<Nuoret>();
         }
-    
+
         public int HuoltajaId { get; set; }
+        [Required(ErrorMessage = "Kenttä Etunimi on pakollinen tieto!")]
         public string Etunimi { get; set; }
+        [Required(ErrorMessage = "Kenttä Sukunimi on pakollinen tieto!")]
         public string Sukunimi { get; set; }
+        [Required(ErrorMessage = "Kenttä Puhelinnumero on pakollinen tieto!")]
         public string Puhelinnumero { get; set; }
+        [Required(ErrorMessage = "Kenttä Osoite on pakollinen tieto!")]
         public string Osoite { get; set; }
+        [Required(ErrorMessage = "Kenttä Sukunimi on pakollinen tieto!")]
+
         public string Postinumero { get; set; }
-    
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Nuoret> Nuoret { get; set; }
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }
