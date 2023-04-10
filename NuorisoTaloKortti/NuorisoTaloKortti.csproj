@@ -130,35 +130,48 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\database_firewall_rules.cs">
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Huoltajat.cs">
-      <DependentUpon>nuori.tt</DependentUpon>
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kayttajat.cs">
-      <DependentUpon>nuori.tt</DependentUpon>
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Nuoret.cs">
-      <DependentUpon>nuori.tt</DependentUpon>
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\nuori.Context.cs">
+    <Compile Include="Models\Nuorisokortti.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>nuori.Context.tt</DependentUpon>
+      <DependentUpon>Nuorisokortti.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\nuori.cs">
+    <Compile Include="Models\Nuorisokortti.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>nuori.tt</DependentUpon>
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\nuori.Designer.cs">
+    <Compile Include="Models\Nuorisokortti.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>nuori.edmx</DependentUpon>
+      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Postitoimipaikat.cs">
-      <DependentUpon>nuori.tt</DependentUpon>
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Nuorisokortti.tt</DependentUpon>
     </Compile>
     <Compile Include="PasswordHashMd5.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\NuoriHuoltajaData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -185,15 +198,15 @@
     <Content Include="Kuvat\askolaLogo.png" />
     <Content Include="Kuvat\index[224].png" />
     <Content Include="Kuvat\Varo iloista Askolaa.png" />
-    <Content Include="Models\nuori.Context.tt">
+    <Content Include="Models\Nuorisokortti.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>nuori.edmx</DependentUpon>
-      <LastGenOutput>nuori.Context.cs</LastGenOutput>
+      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
+      <LastGenOutput>Nuorisokortti.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\nuori.tt">
+    <Content Include="Models\Nuorisokortti.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>nuori.edmx</DependentUpon>
-      <LastGenOutput>nuori.cs</LastGenOutput>
+      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
+      <LastGenOutput>Nuorisokortti.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -254,12 +267,12 @@
     <Content Include="wwwroot\js\bootstrap.esm.min.js" />
     <Content Include="wwwroot\js\bootstrap.js" />
     <Content Include="wwwroot\js\bootstrap.min.js" />
-    <EntityDeploy Include="Models\nuori.edmx">
+    <EntityDeploy Include="Models\Nuorisokortti.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>nuori.Designer.cs</LastGenOutput>
+      <LastGenOutput>Nuorisokortti.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\nuori.edmx.diagram">
-      <DependentUpon>nuori.edmx</DependentUpon>
+    <Content Include="Models\Nuorisokortti.edmx.diagram">
+      <DependentUpon>Nuorisokortti.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />

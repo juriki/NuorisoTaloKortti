@@ -13,7 +13,7 @@ namespace NuorisoTaloKortti.Controllers
 
     public class adminController : Controller
     {
-        nurisokorttiEntities1 db = new nurisokorttiEntities1();
+        nurisokorttiEntities3 db = new nurisokorttiEntities3();
 
         // GET: admin
         public ActionResult Index()

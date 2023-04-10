@@ -13,7 +13,7 @@ namespace NuorisoTaloKortti.Controllers
     public class NuoretController : Controller
     {
         // GET: Nuoret
-        nurisokorttiEntities1 db = new nurisokorttiEntities1();
+        nurisokorttiEntities3 db = new nurisokorttiEntities3();
         public ActionResult Index()
         {
             if (Session["Kayttajanimi"] != null && Session["Yllapito"].ToString() == "True")
@@ -113,7 +113,7 @@ namespace NuorisoTaloKortti.Controllers
                         {
                             db.SaveChanges();
 
-                        //    MessageBox.Show("Käyttäjän "+ nuori.Etunimi.ToString() + " " + nuori.Sukunimi.ToString() + " Käyttäjänimi kirjautumsita varten on :" + nuori.Kayttajanimi);
+                            MessageBox.Show("Käyttäjän "+ nuori.Etunimi.ToString() + " " + nuori.Sukunimi.ToString() + " Käyttäjänimi kirjautumsita varten on :" + nuori.Kayttajanimi);
 
                             lodstatus = true;
                         }

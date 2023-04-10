@@ -7,30 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace NuorisoTaloKortti.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
+    using NuorisoTaloKortti.Models;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Nuoret
     {
+
         public int NuoriId { get; set; }
 
-        [Required(ErrorMessage = "Kentt√§ Etunimi on pakollinen tieto!")]
+        [Required(ErrorMessage = "Kentt‰ Etunimi on pakollinen tieto!")]
         public string Etunimi { get; set; }
-        [Required(ErrorMessage = "Kentt√§ Sukunimi on pakollinen tieto!")]
+        [Required(ErrorMessage = "Kentt‰ Sukunimi on pakollinen tieto!")]
         public string Sukunimi { get; set; }
         public System.DateTime SyntymaAika { get; set; }
-        [Required(ErrorMessage = "Kentt√§ Puhelinnumero on pakollinen tieto!")]
+        [Required(ErrorMessage = "Kentt‰ Puhelinnumero on pakollinen tieto!")]
         public string Puhelinnumero { get; set; }
-        [Required(ErrorMessage = "Kentt√§ Osoite on pakollinen tieto!")]
+        [Required(ErrorMessage = "Kentt‰ Osoite on pakollinen tieto!")]
 
         public string Osoite { get; set; }
         public string Postinumero { get; set; }
         public int Huoltaja { get; set; }
-        [Required(ErrorMessage = "Kentt√§ S√§hk√∂posti on pakollinen tieto!")]
+        [Required(ErrorMessage = "Kentt‰ S‰hkˆposti on pakollinen tieto!")]
         public string SPosti { get; set; }
         public string Allergiat { get; set; }
         public bool Kuvauslupa { get; set; }
@@ -40,6 +43,8 @@ namespace NuorisoTaloKortti.Models
 
         public virtual Huoltajat Huoltajat { get; set; }
         public virtual Postitoimipaikat Postitoimipaikat { get; set; }
-
     }
 }
+
+
+
