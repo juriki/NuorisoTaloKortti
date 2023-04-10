@@ -11,35 +11,22 @@ namespace NuorisoTaloKortti.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-
+    
     public partial class Nuoret
     {
         public int NuoriId { get; set; }
-
-        [Required(ErrorMessage = "Kenttä Etunimi on pakollinen tieto!")]
         public string Etunimi { get; set; }
-        [Required(ErrorMessage = "Kenttä Sukunimi on pakollinen tieto!")]
         public string Sukunimi { get; set; }
         public System.DateTime SyntymaAika { get; set; }
-        [Required(ErrorMessage = "Kenttä Puhelinnumero on pakollinen tieto!")]
         public string Puhelinnumero { get; set; }
-        [Required(ErrorMessage = "Kenttä Osoite on pakollinen tieto!")]
-
         public string Osoite { get; set; }
         public string Postinumero { get; set; }
         public int Huoltaja { get; set; }
-        [Required(ErrorMessage = "Kenttä Sähköposti on pakollinen tieto!")]
         public string SPosti { get; set; }
         public string Allergiat { get; set; }
         public bool Kuvauslupa { get; set; }
         public bool Aktivointi { get; set; }
         public byte[] Kuva { get; set; }
         public string Kayttajanimi { get; set; }
-
-        public virtual Huoltajat Huoltajat { get; set; }
-        public virtual Postitoimipaikat Postitoimipaikat { get; set; }
-
     }
 }
