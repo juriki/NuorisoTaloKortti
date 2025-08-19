@@ -1,9 +1,5 @@
 # NuorisoTaloKortti
 
-
-## Suomeksi
-# NuorisoTaloKortti
-
 **NuorisoTaloKortti** on digitaalisten kulkulupien järjestelmä nuorisotaloille.  
 Jokaisella käyttäjällä on **kortti**, joka näkyy puhelimen näytöllä ja sisältää valokuvan, nimen ja muuta tärkeää tietoa.
 
