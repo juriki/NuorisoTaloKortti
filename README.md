@@ -1,3 +1,4 @@
+
 # NuorisoTaloKortti
 
 Suomeksi | English
@@ -17,7 +18,7 @@ Jokaisella käyttäjällä on kortti, joka näkyy puhelimen näytöllä ja sisä
 ### Teknologia-arkkitehtuuri
 - Palvelin: .NET + MS SQL Server / Azure
 - Android: .NET (Xamarin)
-- iOS: Swift
+- iOS: Swift (erillinen repository: https://github.com/juriki/NuorisoKortti)
 - Web: ASP.NET Core + HTML/CSS + JavaScript
 - API: REST API sovellusten yhdistämiseksi
 
@@ -30,7 +31,7 @@ Palvelin: http://localhost:5000
 
 ### Asiakasohjelmat
 - Android (.NET): avaa projekti Visual Studiossa
-- iOS (Swift): avaa Xcodessa
+- iOS (Swift): katso erillinen repository: https://github.com/juriki/NuorisoKortti
 - Web (ASP.NET Core): dotnet build
 
 ### Kuvakaappaukset
@@ -62,7 +63,7 @@ Each user has a card displayed on their phone screen containing a photo, name, a
 ### Technology Stack
 - Backend: .NET + MS SQL Server / Azure
 - Android: .NET (Xamarin)
-- iOS: Swift
+- iOS: Swift (separate repository: https://github.com/juriki/NuorisoKortti)
 - Web: ASP.NET Core + HTML/CSS + JavaScript
 - API: REST API for client integration
 
@@ -75,7 +76,7 @@ Server: http://localhost:5000
 
 ### Clients
 - Android (.NET): open the project in Visual Studio
-- iOS (Swift): open in Xcode
+- iOS (Swift): see separate repository: https://github.com/juriki/NuorisoKortti
 - Web (ASP.NET Core): dotnet build
 
 ### Screenshots
