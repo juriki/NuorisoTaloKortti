@@ -1,7 +1,11 @@
-
 # NuorisoTaloKortti
 
 Suomeksi | English
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Platform: Android](https://img.shields.io/badge/Android-.NET-blue.svg)]()
+[![Platform: iOS](https://img.shields.io/badge/iOS-Swift-lightgrey.svg)](https://github.com/juriki/NuorisoKortti)
+[![Platform: Web](https://img.shields.io/badge/Web-ASP.NET_Core-orange.svg)]()
 
 Suomeksi
 
@@ -90,4 +94,3 @@ Open a Pull Request
 
 ### License
 MIT
-</pre>
